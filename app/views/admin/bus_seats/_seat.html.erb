@@ -42,7 +42,7 @@
           <% else %>
             <%= link_to seat.order.id, admin_order_path(seat.order), :target => 'edit-win' %>
           <% end %>
-          (<%= seat.order.order_price.num_total %>p)
+          (<%= seat.order.order_price.num_total if seat.order.order_price %>p)
           <br />
           <% if seat.order.order_detail %>
             <%= seat.order.order_detail.full_name %><br />

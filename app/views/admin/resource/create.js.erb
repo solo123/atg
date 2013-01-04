@@ -5,7 +5,7 @@
     .append("<%= escape_javascript(render(:partial => 'row', :locals => {:obj => @object})) %>");
 
   if ($('#list_<%= class_name %>').length == 0){
-	  alert("[<%= class_name %>] Add 1 new <%= @object.class.name %> data.");
+	  //alert("[<%= class_name %>] Add 1 new <%= @object.class.name %> data.");
   }
 
 var edit_div = "#edit_<%= @object.class.name.underscore %>_div";

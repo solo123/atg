@@ -48,7 +48,7 @@ function reload_seat_table(){
 }
 function reload_orders(){
   $.get("/admin/schedules/"+ $('.s-id').text().trim() +"/orders",function(data){
-    $('#.unseat_orders').html(data);
+    $('#unseat_orders').html(data);
   });
 }
 function get_current_assignment_id(){

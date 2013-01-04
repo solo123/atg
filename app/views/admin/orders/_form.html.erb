@@ -58,6 +58,6 @@
   <div class="actions">
     <%= f.submit %>
     &nbsp;
-    <%= link_to 'Payment', object_url(@object) %>
+    <%= link_to 'Payment', new_admin_payment_path(:order_id => @object.id) if @object.id %>
   </div>  
 <% end %>
