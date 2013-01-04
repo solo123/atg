@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  after_save :save_seats
+  #after_save :save_seats
 
   attr_accessor :seats
 
@@ -18,6 +18,7 @@ class Order < ActiveRecord::Base
 
   def gen_order_number
     self.order_number = "#{(created_at.year - 2000).to_s(36)[-1].chr}#{created_at.month.to_s(36)}#{created_at.day.to_s(36)}#{('%04d' % id).to_s[-4..-1]}".upcase
+    save_seats
     self.save
   end
 
