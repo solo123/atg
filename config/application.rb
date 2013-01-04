@@ -59,6 +59,6 @@ module Omei
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.precompile += ['blueprint/print.css', 'blueprint/ie.css', 'blueprint/screen.css', 'admin/admin.css', 'admin/admin.js', 'store/all.css', 'store/all.js', 'admin/schedules/assignments.js', 'login.css', 'positions.css']
+    #config.assets.precompile += ['blueprint/print.css', 'blueprint/ie.css', 'blueprint/screen.css', 'admin/admin.css', 'admin/admin.js', 'store/all.css', 'store/all.js', 'admin/schedules/assignments.js', 'login.css', 'positions.css']
   end
 end
