@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  #after_save :save_seats
+  after_save :save_seats
 
   attr_accessor :seats
 
@@ -33,13 +33,16 @@ class Order < ActiveRecord::Base
     end
     @seats = eval('[' + @seats + ']') if @seats.class.name == 'String'
     BusSeat.where(:order_id => self.id).delete_all
-    o_seats = get_seats
-    (@seats - o_seats).each do |s|
-        bs = BusSeat.new
-        bs.order_id = self.id
+    @seats.each do |s|
+      bs = nil
+      if self.schedule_assignment.seats.where(:seat_number => s).blank?
+        bs = self.schedule_assignment.seats.build
         bs.seat_number = s
-        bs.schedule_assignment_id = self.schedule_assignment_id
-        bs.save
+      else
+        bs = self.schedule_assignment.seats.where(:seat_number => s).first
+      end
+      bs.order_id = self.id
+      bs.save
     end
   end
   def get_seats

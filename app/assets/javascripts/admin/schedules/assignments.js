@@ -36,11 +36,11 @@ function order(){
 }
 
 function order_after_updated(){
-  reload_seat_table();
-  reload_orders();
+//reload_seat_table();
+// reload_orders();
 }
 function order_after_created(){
-  order_after_updated();
+  //order_after_updated();
 }
 function reload_seat_table(){
   var api = $('.tabs').data('tabs');
