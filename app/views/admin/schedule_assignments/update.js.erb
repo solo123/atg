@@ -1,0 +1,4 @@
+$("#edit_div").dialog('close');
+var idx = $('#tabs').tabs('option','selected');
+$('#tabs').tabs( "load", idx);
+$('#tabs ul:first li:eq(' + idx + ') a').text("<%= @object.title %>");

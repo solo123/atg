@@ -1,0 +1,106 @@
+<% order = Order.find(params[:order_id]) %>
+<p>
+      Balance before:
+      <label id='balance' class='pay-amount'><%= order.order_price.balance_amount %></label>
+      Pay Amount: 
+      <label id='paid_amount' class='pay-amount'>0.00</label>
+      Balance after:
+      <label id='balance_after' class='pay-amount'><%= order.order_price.balance_amount %></label>
+    </p>
+<div>
+	<ul id='tabs_payment' class='tabs'>
+		<li><a href='#'>Cash</a></li>
+		<li><a href='#'>Credit Card</a></li>
+		<li><a href='#'>Check</a></li>
+		<li><a href='#'>Credit Voucher</a></li>
+		<li><a href='#'>Company PR</a></li>
+  </ul>
+  <div class='panes'>
+    <div id='tab-cash' tag='cash'>
+      <%= render 'form_pay_cash' %>
+	</div>
+	<div id='tab-cc' tag='credit_card' >
+		<table style="width:auto;">
+			<tr>
+				<td>Full name:</td>
+				<td><%= text_field_tag 'credit_card[full_name]' %></td>
+			</tr>
+			<tr>
+				<td>Card type:</td>
+				<td><%= select('credit_card','card_type', %w[Visa Master AE]) %></td>
+			</tr>
+			<tr>
+				<td>Card Number:</td>
+				<td><%= text_field_tag 'credit_card[card_number]' %></td>
+			</tr>
+			<tr>
+				<td>Valid date:</td>
+				<td><%= text_field_tag 'credit_card[valid_date]' %></td>
+			</tr>
+			<tr>
+				<td>CSC:</td>
+				<td><%= text_field_tag 'credit_card[csc]' %></td>
+			</tr>
+			<tr>
+				<td>Amount:</td>
+				<td><%= text_field_tag 'credit_card[amount]' %></td>
+			</tr>
+			<tr>
+				<td>Prof code:</td>
+				<td><%= text_field_tag 'credit_card[prof_code]' %></td>
+			</tr>
+			<tr>
+				<td>Service fee:</td>
+				<td><%= text_field_tag 'credit_card[service_fee]' %></td>
+			</tr>
+			<tr>
+				<td>Total amount:</td>
+				<td><%= text_field_tag 'credit_card[total_amount]' %></td>
+			</tr>
+		</table>
+	</div>
+	<div id='tab-check' tag='check' style='height:100px;'>
+		<table style="width:auto;">
+			<tr>
+				<td>Amount:</td>
+				<td><%= text_field_tag 'check[amount]' %></td>
+			</tr>
+			<tr>
+				<td>Check number:</td>
+				<td><%= text_field_tag 'check[check_number]' %></td>
+			</tr>
+		</table>
+	</div>
+	<div id='tab-voucher' tag='voucher' style='height:100px;'>
+		<table style="width:auto;">
+			<tr>
+				<td>Voucher#</td>
+				<td><%= text_field_tag 'voucher[voucher_number]'%></td>
+			</tr>
+			<tr>
+				<td>Amount:</td>
+				<td><%= text_field_tag 'voucher[amount]'%></td>
+			</tr>
+		</table>
+	</div>
+	<div id='tab-ap' tag='company_receivable' style='height:100px;'>
+		<p>
+			Company:
+		</p>
+		<p>
+			Company commission: <%= text_field_tag 'company_receivable[commission]' %>
+		</p>
+		<p>
+			Amount: <%= text_field_tag 'company_receivable[amount]' %>
+		</p>
+		<p>
+			Company order# <%= text_field_tag 'company-receivable[related_order_number]' %>
+		</p>
+  </div>
+</div>
+</div>
+<br />
+<p>
+	Remark: <%= text_area_tag :remark, :style => 'height:50px;' %>
+</p>
+

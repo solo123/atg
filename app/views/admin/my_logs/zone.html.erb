@@ -1,0 +1,11 @@
+  <h1>Last operations</h1>
+  <table class='compact'>
+    <% @collection.each do |op| %>
+    <tr>
+      <td><%= op.level %></td>
+      <td><%= link_to op.log_brief, admin_log_path(op), :remote => true %></td>
+      <td class='note-text'><time class='timeago' datetime='<%= op.created_at.iso8601 %>'><%= op.created_at %></time></td>
+    </tr>
+    <% end %>
+  </table>
+

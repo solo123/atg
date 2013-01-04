@@ -1,0 +1,47 @@
+<%= content_for :breadcrumbs do %>
+  System &gt;
+  Accounts 
+<% end %>
+<div class="toolbar">
+  <ul class="actions">
+  	<li>
+			<%= form_for( @search, :url => admin_accounts_path ) do |f| %>
+  		<%= f.label :account_name_or_account_brief_contains, "Account" %> <%= f.text_field :account_name_or_account_brief_contains, :size => 15 %> &nbsp;
+  		<%= button 'Search' %>
+			<% end %>
+  	</li>
+    <li>
+      <%= button_link_to 'Add Employee Account', new_admin_account_path(:ot => 'Employee'), {:remote => true, :icon => 'add'} %>
+    </li>
+    <li>
+      <%= button_link_to 'Add Company Account', new_admin_account_path(:ot => 'Company'), {:remote => true, :icon => 'add'} %>
+    </li>
+  </ul>
+  <br class="clear">
+</div>
+
+<div class='data-pager'>
+<%= will_paginate(@collection) %>
+</div>
+<table class="data-list" id="list_accounts">
+  <thead>
+  <tr>
+    <th>id</th>
+	<th>type</th>
+	<th>related id</th>
+  <th>name</th>
+  <th>brief</th>
+  <th>balance</th>
+  <th>status</th>
+	<th>created_at</th>
+  <th>updated_at</th>
+  <th>op</th>
+  </tr>
+</thead>
+<% @collection.each do |d| %>
+	<%= render :partial => 'row', :locals => {:obj => d} %>
+<% end %>
+</table>
+<%= will_paginate(@collection) %>
+
+

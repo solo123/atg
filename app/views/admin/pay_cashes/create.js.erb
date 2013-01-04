@@ -1,0 +1,6 @@
+<% if flash[:error] %>
+  alert("<%= flash[:error] %>");
+<% else %>
+  $('#edit_payment_div').dialog('close');
+<% end %>
+

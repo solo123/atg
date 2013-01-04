@@ -1,0 +1,10 @@
+    <tr>
+        <td><%= link_to obj.order_number, admin_order_path(obj) %></td>
+        <td><%= obj.order_detail.full_name if obj.order_detail %></td>
+        <td><%= obj.schedule.title if obj.schedule %></td>
+        <td><%= obj.created_at %></td>
+        <td><%= obj.status %></td>
+      <td class='actions'>
+          <%= link_to_edit_url edit_admin_order_path(obj), :title => "admin_edit_#{dom_id(obj)}", :remote => true %>
+      </td>
+    </tr>

@@ -1,0 +1,11 @@
+<tr id="<%= dom_id obj%>" <%= 'class=\'deleted\'' if !obj.level || obj.level < 3 %>>
+  <td><%= obj.id %></td>
+  <td><%= obj.level %></td>
+  <td><%= obj.page_url %></td>
+  <td><%= obj.controller %></td>
+  <td><%= obj.action %></td>
+  <td><%= obj.log_brief %></td>
+  <td><%= obj.created_at %></td>
+  <td><%= link_to 'view', admin_log_path(obj), :remote => true %></td>
+</tr>
+

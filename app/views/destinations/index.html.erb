@@ -1,0 +1,25 @@
+<%= content_for :head do %>
+  <script type='text/javascript'>
+    $(function(){
+        $('#dest_list').listnav();
+        });
+
+</script>
+<% end %>
+<h2>Destinations</h2>
+<div id="dest_list-nav" style='margin-top:10px;margin-bottom:10px;'></div>
+<ul id="dest_list">
+  <% @destinations.each do |d| %>
+    <% if d.description %>
+    <li title="<%=h d.description.title%>">
+    <a href='<%= destination_path(d) %>'>
+      <div class='img-case'>
+        <%= image_tag d.title_photo.pic.url(:thumb) if d.title_photo %>
+      </div>
+      <%= d.description.title %>
+    </a>
+  </li>
+<% end %>
+  <% end %>
+</ul>
+<div class="clear"></div>

@@ -1,0 +1,17 @@
+<tr id="<%= dom_id obj %>" <%= 'class=\'deleted\'' if !obj.status || obj.status < 1 %>>
+  <td><%= obj.id %></td>
+  <td><%= obj.name %></td>
+  <td><%= obj.bus_type %></td>
+  <td><%= obj.seats %></td>
+  <td><%= obj.plate_number %></td>
+  <td><%= obj.vin_number %></td>
+  <td><%= obj.inspection_date %></td>
+  <td><%= obj.status %></td>
+  <td><%= formatted_shot_datetime(obj.created_at) %></td>
+  <td class="actions">
+    <%= link_to 'Shifts', admin_bus_path(obj) + '/shifts' %> | 
+    <%= link_to_edit obj %> |
+    <%= link_to 'Photos', admin_bus_photos_path(obj), {:target => 'edit-win'} %> |
+    <%= link_to_hide obj, 'data-confirm' => 'Are you sure to hide/show this Position?' %>
+  </td>
+</tr>

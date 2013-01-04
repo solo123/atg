@@ -1,0 +1,10 @@
+		<div class='content-block'>
+			<h2>Picks</h2>
+			<ul class='list-184'>
+			<% Destination.order('created_at desc').limit(14).each do |d| %>
+        <% if d.description %>
+          <li><%= link_to d.description.title, destination_path(d), :title => d.description.title %></li>
+        <% end %>
+			<% end %>
+			</ul>
+		</div>
