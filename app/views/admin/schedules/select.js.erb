@@ -3,13 +3,13 @@ $("#select_schedule_div")
 	.dialog('open');
 
 $( "#tour_select" ).autocomplete({
-	source: "/admin/tours/search",
+	source: host_path + "/tours/search",
 	minLength: 2,
 	select: function( event, ui ) {
 		if (ui.item) {
 			$('#tour_id').val(ui.item.id);
 			$('#departure_date').val('');
-			$.ajax('/admin/tours/' + ui.item.id + '/dates.js');
+			$.ajax(host_path + '/tours/' + ui.item.id + '/dates.js');
 		}
 	}
 });

@@ -30,24 +30,31 @@
 	  	<% end %>
 
 	  	Telephones:
-      <%= link_to 'Add', admin_user_infos_path + '/add_tel', :remote => true %>
+      <%= add_object_js_link 'Add', f, :telephones, 'form_tel', '#tels'  %>
       <br /> 
-      <table id='tels' class='compact'>
+      <div id='tels'>
         <%= f.fields_for :telephones do |tel_form| %>
         	<%= render :partial => 'form_tel', :locals => { :f => tel_form} %>
         <% end %>
-      </table><hr />
+      </div><hr />
 	  	Emails:
-      <%= link_to 'Add', admin_user_infos_path + '/add_email', :remote => true %>
+      <%= add_object_js_link 'Add', f, :emails, 'form_email', '#emails'  %>
       <br /> 
-      <table id='emails' class='compact'>
+      <div id='emails'>
         <%= f.fields_for :emails do |email_form| %>
         	<%= render :partial => 'form_email', :locals => { :f => email_form} %>
         <% end %>
-      </table><hr />
+      </div>
+      <hr />
 	  	
-	  	<p>Addresses:
-	  	</p>
+	  	Addresses:
+      <%= add_object_js_link 'Add', f, :addresses, 'form_address', '#addresses'  %>
+      <br /> 
+      <div id='addresses'>
+        <%= f.fields_for :addresses do |adr_form| %>
+        	<%= render :partial => 'form_address', :locals => { :f => adr_form} %>
+        <% end %>
+      </div>
 
 	 	</div>
 	</div>

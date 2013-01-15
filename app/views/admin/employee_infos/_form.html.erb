@@ -13,17 +13,15 @@
 	  <% end %>
 	  <%= f.field_container :employ_date do %>
 	  	<%= f.label :employ_date %><br />
-	  	<%= f.text_field :employ_date %>
+      <%= f.text_field :employ_date, :class => 'date-picker' %>
 	  <% end %>
-	  </div>
-	  <div class='span-8 last'>
 	  <%= f.field_container :ssn do %>
 	  	<%= f.label :ssn %><br />
 	  	<%= f.text_field :ssn %>
 	  <% end %>
 	  <%= f.field_container :birthday do %>
 	  	<%= f.label :birthday %><br />
-	  	<%= f.text_field :birthday %>
+      <%= f.text_field :birthday, :class => 'date-picker' %>
 	  <% end %>
     <%= f.field_container :roles do %>
       <%= f.label :roles %><br />
@@ -33,10 +31,39 @@
         <%= label_tag dom_id(role), role.type_text %>
       <% end %>
     <% end %>
-		<%= render :partial => 'admin/shared/status', :locals => {:f => f} %> 
-	 	</div>
+    </div>
+    <div class='span-8 last'>
+	  	Telephones:
+      <%= add_object_js_link 'Add', f, :telephones, '/admin/user_infos/form_tel', '#tels'  %>
+      <br /> 
+      <div id='tels'>
+        <%= f.fields_for :telephones do |tel_form| %>
+        	<%= render :partial => '/admin/user_infos/form_tel', :locals => { :f => tel_form} %>
+        <% end %>
+      </div><hr />
+	  	Emails:
+      <%= add_object_js_link 'Add', f, :emails, '/admin/user_infos/form_email', '#emails'  %>
+      <br /> 
+      <div id='emails'>
+        <%= f.fields_for :emails do |email_form| %>
+        	<%= render :partial => '/admin/user_infos/form_email', :locals => { :f => email_form} %>
+        <% end %>
+      </div>
+      <hr />
+	  	
+	  	Addresses:
+      <%= add_object_js_link 'Add', f, :addresses, '/admin/user_infos/form_address', '#addresses'  %>
+      <br /> 
+      <div id='addresses'>
+        <%= f.fields_for :addresses do |adr_form| %>
+        	<%= render :partial => '/admin/user_infos/form_address', :locals => { :f => adr_form} %>
+        <% end %>
+      </div>
+
+    </div>
 	</div>
 
+  <%= render :partial => 'admin/shared/status', :locals => {:f => f} %> 
   <div class="actions">
     <%= f.submit %>
   </div>

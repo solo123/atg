@@ -6,6 +6,7 @@ class CreateCompanies < ActiveRecord::Migration
     	t.string :company_type
     	t.string :icon_url
     	t.string :website
+      t.integer :title_photo_id
     	t.integer :status, :default => 0
     	t.timestamps
     end

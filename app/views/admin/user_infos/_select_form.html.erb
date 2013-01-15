@@ -2,6 +2,6 @@
 		Search Customer by name/email/telephone:<br />
 		<%= text_field_tag :user_select, '', :style => 'width:300px' %>
 		<%= hidden_field_tag :user_id %>
-    <%= button_link_to 'Select', '/admin/user_infos/select?id=0', {:icon => 'add', :remote => true, :id => 'select_user_button'} %> <br />
+    <%= button_link_to 'Select', select_admin_user_infos_path + 'id=0', {:icon => 'add', :remote => true, :id => 'select_user_button'} %> <br />
 	</div>
     <%= render 'form' %>

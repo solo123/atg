@@ -1,14 +1,11 @@
 class Order < ActiveRecord::Base
-  #after_save :save_seats
-
-  attr_accessor :seats
-
   belongs_to :schedule
   belongs_to :schedule_assignment
   has_one :order_detail
   has_one :order_price
   has_many :order_items
   has_many :payments, :as => :payment_data
+  has_many :bus_seats
 
   accepts_nested_attributes_for :order_detail, :allow_destroy => true
   accepts_nested_attributes_for :order_price, :allow_destroy => true
@@ -18,39 +15,20 @@ class Order < ActiveRecord::Base
 
   def gen_order_number
     self.order_number = "#{(created_at.year - 2000).to_s(36)[-1].chr}#{created_at.month.to_s(36)}#{created_at.day.to_s(36)}#{('%04d' % id).to_s[-4..-1]}".upcase
-    save_seats
     self.save
   end
 
-  def seats
-    @seats ||= get_seats
-  end
-
-  def save_seats
+  def set_seats(seats)
     return unless self.schedule_assignment
-    unless @seats
-      BusSeat.where(:order_id => self.id).delete_all
-      return
-    end
-    @seats = eval('[' + @seats + ']') if @seats.class.name == 'String'
     BusSeat.where(:order_id => self.id).delete_all
-    @seats.each do |s|
-      bs = nil
-      if self.schedule_assignment.seats.where(:seat_number => s).blank?
-        bs = self.schedule_assignment.seats.build
-        bs.seat_number = s
-      else
-        bs = self.schedule_assignment.seats.where(:seat_number => s).first
-      end
-      bs.order_id = self.id
-      bs.save
-    end
-  end
-  def get_seats
-    if self.schedule_assignment
-      self.schedule_assignment.seats.where(:order_id => self.id).map {|ass| ass.seat_number}
-    else
-      nil
+    return if seats.blank?
+
+    order_seats = eval('[' + seats + ']') if seats.class.name == 'String'
+    order_seats.each do |seat_number|
+      seat_now = self.schedule_assignment.seats.where(:seat_number => seat_number).first || self.schedule_assignment.seats.build
+      seat_now.seat_number = seat_number
+      seat_now.order = self
+      seat_now.save
     end
   end
   def recaculate_price

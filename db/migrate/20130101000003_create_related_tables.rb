@@ -43,9 +43,9 @@ class CreateRelatedTables < ActiveRecord::Migration
     	t.timestamps
     end
     create_table :remarks do |t|
-      t.string :notes_type
-      t.integer :notes_id
-      t.string :notes_text
+      t.string :note_data_type
+      t.integer :note_data_id
+      t.string :note_text
       t.integer :employee_info_id
       t.integer :status, :default => 0
       t.timestamps

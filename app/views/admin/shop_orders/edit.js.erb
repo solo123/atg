@@ -32,7 +32,7 @@ function show_customer_dialog(){
 			$('#operates_order_customer_attributes_customer_id').val(data[0]);
 			return;
 			
-			$.get('/admin/tours/' + data[0] + '/get_schedules', function(data){
+			$.get(host_path + '/tours/' + data[0] + '/get_schedules', function(data){
 				var vds = eval(data);
 				$('#departure_date')
 				.datepicker({

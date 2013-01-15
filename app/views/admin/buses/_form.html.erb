@@ -31,6 +31,15 @@
 	  <% end %>
 	  </div>
 	  <div class='span-8 last'>
+	  <%= f.field_container :contact_name do %>
+	  	<%= f.label :contact_name %><br />
+	  	<%= f.text_field :contact_name %>
+	  <% end %>
+  <%= f.field_container :tel do %>
+	  	<%= f.label :tel %><br />
+	  	<%= f.text_field :tel %>
+	  <% end %>
+
 	  <%= f.field_container :plate_number do %>
 	  	<%= f.label :plate_number %><br />
 	  	<%= f.text_field :plate_number %>

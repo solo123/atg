@@ -25,10 +25,13 @@ module Admin
       @object.attributes = params[object_name.singularize.parameterize('_')]
       if @object.changed_for_autosave?
         @changes = @object.all_changes
-        @object.save
+        if @object.save
+          invoke_callbacks(:update, :after)
+        else
+          flash[:error] = @object.errors.full_messages.to_sentence
+          @no_log = 1
+        end
       end
-      #@object.update_attributes(params[object_name.singularize.parameterize('_')])
-      invoke_callbacks(:update, :after)
     end
     def create
       @object = object_name.classify.constantize.new(params[object_name.singularize.parameterize('_')])
@@ -37,6 +40,7 @@ module Admin
         invoke_callbacks(:create, :after)
       else
         flash[:error] = @object.errors.full_messages.to_sentence
+        @no_log = 1
       end
     end
     def destroy
@@ -53,7 +57,8 @@ module Admin
       def load_collection
         params[:search] ||= {}
         @search = object_name.classify.constantize.metasearch(params[:search])
-        @collection = @search.page(params[:page]).per_page(AppConfig[:admin_list_per_page])
+        pages = cfg.get_config(:admin_list_per_page) || "20"
+        @collection = @search.page(params[:page]).per_page(pages.to_i)
       end 
       def load_object
         @object = object_name.classify.constantize.find(params[:id])

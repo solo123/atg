@@ -1,0 +1,10 @@
+<h1>Company: <%= detail.company_name %>(<%= detail.short_name %>)</h1>
+<div class='container'>
+  <div class='span-8'>
+    <%= image_tag detail.title_photo.pic.url(:small) if detail.title_photo %>
+  </div>
+  <div class='span-8 last'>
+    <p>Company type: <%= detail.company_type %></p>
+    <p>Website: <%= detail.website %></p>
+  </div>
+</div>

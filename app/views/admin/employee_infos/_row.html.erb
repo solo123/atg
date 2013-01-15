@@ -1,14 +1,17 @@
-  <tr id="<%= dom_id obj %>" <%= 'class=\'deleted\'' if obj.status %>>
-      <td><%= obj.id %></td>
-      <td><%= obj.company_id %></td>
-      <td><%= obj.nickname %></td>
-      <td><%= obj.employ_date %></td>
-      <td><%= obj.ssn %></td>
-      <td><%= obj.birthday %></td>
-      <td><%= obj.status %></td>
+  <% tt = TypeText.instance %>
+  <tr id="<%= dom_id row %>" <%= 'class=deleted' unless row.status && row.status == 1 %>>
+      <td><%= row.id %></td>
+      <td><%= row.company_id %></td>
+      <td><%= row.nickname %></td>
+      <td><%= tt.get_texts('roles', row.roles) %></td>
+      <td><%= row.employ_date %></td>
+      <td><%= row.ssn %></td>
+      <td><%= row.birthday %></td>
+      <td><%= row.status %></td>
     <td class="actions">
-      <%= link_to_show obj %> |
-      <%= link_to_edit obj %> |
-      <%= link_to_hide obj, 'data-confirm' => 'Are you sure to hide/show this Employee?' %>
+      <%= link_to_show row %> |
+      <%= link_to_edit row %> |
+      <%= link_to 'Photos', admin_employee_info_photos_path(row), {:target => 'edit-win'} %> |
+      <%= link_to_hide row, 'data-confirm' => 'Are you sure to hide/show this Employee?' %>
     </td>
   </tr>

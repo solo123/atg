@@ -14,6 +14,9 @@
     <li>
     <%= button_link_to "Generate schedules", 'schedules/generate', { :icon => 'add', :id => 'generate_schedule'} %>
     </li>
+    <li>
+      <%= button_link_to "Add schedule", new_admin_schedule_path, { :icon => 'add', :id => 'add_schedule', :remote => true} %>
+    </li>
 
   </ul>
   <br class='clear' />
@@ -37,7 +40,7 @@
 </thead>
 <tbody>
 <% @collection.each do |s| %>
-	<%= render :partial => 'row', :locals => {:obj => s} %>
+	<%= render :partial => 'row', :object => s %>
 <% end %>
 </tbody>
 </table>

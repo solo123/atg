@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101000008) do
+ActiveRecord::Schema.define(:version => 20130109000001) do
 
   create_table "accounts", :force => true do |t|
     t.string   "owner_type"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.datetime "updated_at",                :null => false
   end
 
+  create_table "app_configurations", :force => true do |t|
+    t.string   "key"
+    t.string   "title"
+    t.string   "val"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "bookmarks", :force => true do |t|
     t.string   "title"
     t.string   "url"
@@ -51,6 +60,15 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.integer  "status",     :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "bus_reserved_dates", :force => true do |t|
+    t.integer  "bus_id"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.string   "reason"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "bus_seats", :force => true do |t|
@@ -75,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
   create_table "buses", :force => true do |t|
     t.string   "name"
     t.integer  "company_id"
+    t.string   "contact_name"
+    t.string   "tel"
     t.string   "bus_type"
     t.integer  "seats"
     t.integer  "seats_per_row"
@@ -102,9 +122,10 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.string   "company_type"
     t.string   "icon_url"
     t.string   "website"
-    t.integer  "status",       :default => 0
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "title_photo_id"
+    t.integer  "status",         :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "company_accounts", :force => true do |t|
@@ -159,13 +180,14 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.string   "pin"
     t.date     "birthday"
     t.string   "roles"
-    t.integer  "status",      :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "title_photo_id"
+    t.integer  "status",         :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "employee_shifts", :force => true do |t|
-    t.integer "employee_id"
+    t.integer "employee_info_id"
     t.integer "schedule_assignment_id"
     t.date    "date"
   end
@@ -217,6 +239,8 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
 
   create_table "logs", :force => true do |t|
     t.integer  "employee_info_id"
+    t.string   "ref_data_type"
+    t.integer  "ref_data_id"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.integer  "sign_in_count"
@@ -240,7 +264,7 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.string   "full_name"
     t.string   "telephone"
     t.string   "email"
-    t.string   "bill_addresss"
+    t.string   "bill_address"
     t.integer  "created_by"
     t.integer  "last_operator"
     t.integer  "last_payment"
@@ -298,7 +322,7 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
   create_table "pay_cashes", :force => true do |t|
     t.integer  "payment_id"
     t.decimal  "amount",     :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "casher_id"
+    t.integer  "account_id"
     t.integer  "status",                                   :default => 0
     t.datetime "created_at",                                                :null => false
     t.datetime "updated_at",                                                :null => false
@@ -409,9 +433,9 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
   add_index "preferences", ["key"], :name => "index_preferences_on_key", :unique => true
 
   create_table "remarks", :force => true do |t|
-    t.string   "notes_type"
-    t.integer  "notes_id"
-    t.string   "notes_text"
+    t.string   "note_data_type"
+    t.integer  "note_data_id"
+    t.string   "note_text"
     t.integer  "employee_info_id"
     t.integer  "status",           :default => 0
     t.datetime "created_at",                      :null => false
@@ -483,15 +507,22 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "todo_workers", :force => true do |t|
+    t.integer  "todo_id"
+    t.integer  "employee_info_id"
+    t.integer  "role"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "todos", :force => true do |t|
-    t.integer  "msg_from"
-    t.integer  "msg_to"
+    t.integer  "employee_info_id"
     t.string   "message"
     t.integer  "level"
     t.integer  "status"
     t.datetime "due_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "tour_prices", :force => true do |t|
@@ -541,12 +572,13 @@ ActiveRecord::Schema.define(:version => 20130101000008) do
     t.integer  "user_id"
     t.string   "full_name"
     t.string   "user_type"
-    t.integer  "user_level", :default => 0
+    t.integer  "user_level",     :default => 0
     t.string   "login_name"
     t.string   "pin"
-    t.integer  "status",     :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "title_photo_id"
+    t.integer  "status",         :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|

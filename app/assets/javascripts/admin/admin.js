@@ -8,6 +8,6 @@
 //= require superfish/hoverIntent
 //= require superfish/superfish
 //= require xheditor/xheditor-1.1.11-zh-cn.min
-//= require admin/menu
-//= require admin/sidebar
+//= require ./init
+//= require_tree ./shared
 

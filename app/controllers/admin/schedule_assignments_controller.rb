@@ -37,7 +37,7 @@ module Admin
       elsif params[:operate] == 'order_seats'
         seats = []
         params[:seats].each do |seat_input|
-          seat = @object.seats.build
+          seat = @object.seats.where(:seat_number => seat_input[0]).first || @object.seats.build
           seat.seat_number = seat_input[0]
           seat.order_id = params[:order_id]
           seat.state = 'order'
@@ -48,6 +48,16 @@ module Admin
         @log_text = params.to_s
       end
     end
+
+    def new
+      @parent = @schedule = Schedule.find(params[:schedule_id])
+      @object = @schedule.assignments.build
+    end
+    protected
+      def load_object
+        @parent = @schedule = Schedule.find(params[:schedule_id])
+        @object = ScheduleAssignment.find(params[:id])
+      end
 
   end
 end

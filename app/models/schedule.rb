@@ -7,5 +7,6 @@ class Schedule < ActiveRecord::Base
 
   has_one :price, :class_name => 'SchedulePrice'
   accepts_nested_attributes_for :price
-  
+
+  default_scope order('departure_date, tour_id')
 end

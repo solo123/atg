@@ -24,7 +24,7 @@
   <thead>
   <tr>
       <th><%= t("id") %></th>
-      <th><%= t("agent") %></th>
+      <th><%= t("company") %></th>
       <th><%= t("name") %></th>
       <th><%= t('employ_date')%></th>
       <th><%= t('ssn') %></th>
@@ -35,7 +35,7 @@
   </thead>
   <tbody>
 <% @collection.each do |e| %>
-  <%= render :partial => 'row', :locals => {:obj => e} %>
+  <%= render :partial => 'row', :object => e %>
 <% end %>
   </tbody>
 </table>

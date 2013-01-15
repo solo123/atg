@@ -6,7 +6,7 @@
   <ul class="actions">
   	<li>
   		<%= form_for( @search, :url => admin_tours_path ) do |f| %>
-        <%= f.select :tour_type_eq, InputType.get_list('tour').map{|t| [t.type_name, t.type_value]}.insert(0, ['All tours', nil]), {}, :class => 'data-field' %>
+        <%= f.select :tour_type_eq, InputType.get_list('tour').map{|t| [t.type_text, t.type_value]}.insert(0, ['All tours', nil]), {}, :class => 'data-field' %>
       <%= f.select :status_eq, [['All Status', nil],['show', 1], ['hide', 0]],{}, :class => 'data-field' %>
       <%= f.text_field :description_title_contains, :size => 15, :class => 'data-field' %>
   		<%= button 'search' %>
@@ -18,8 +18,6 @@
   </ul>
   <div class='clear'></div>
 </div>
-
-<div id="edit_div" class='dialog-normal'></div>
 
 <div class='data-pager'>
 <%= will_paginate(@collection) %>
@@ -43,7 +41,7 @@
 </thead>
 <tbody>
 <% @collection.each do |tour| %>
-	<%= render :partial => 'row', :locals => {:obj => tour} %>
+	<%= render :partial => 'row', :object => tour %>
 <% end %>
 </tbody>
 </table>

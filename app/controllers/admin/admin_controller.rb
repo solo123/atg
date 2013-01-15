@@ -11,6 +11,9 @@ module Admin
     def title
   	  @title ||=  controller_name + ' ' + action_name
     end
+  def cfg
+    AppConfig.instance
+  end
 
     def log_operation
       return if defined? @no_log
@@ -57,7 +60,11 @@ module Admin
       else
         log.log_brief ||= "#{log.action} #{log.controller}: #{params[:id]}"
         log.log_text ||= params.to_s       
-        log.level = 2
+        if defined? @log_level
+          log.level = @log_level 
+        else
+          log.level = 2
+        end
       end
       log.save if log.level > 0
     end

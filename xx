@@ -1,0 +1,374 @@
+                            new_employee_session GET    /employees/sign_in(.:format)                                                                              devise/sessions#new
+                                employee_session POST   /employees/sign_in(.:format)                                                                              devise/sessions#create
+                        destroy_employee_session DELETE /employees/sign_out(.:format)                                                                             devise/sessions#destroy
+                               employee_password POST   /employees/password(.:format)                                                                             devise/passwords#create
+                           new_employee_password GET    /employees/password/new(.:format)                                                                         devise/passwords#new
+                          edit_employee_password GET    /employees/password/edit(.:format)                                                                        devise/passwords#edit
+                                                 PUT    /employees/password(.:format)                                                                             devise/passwords#update
+                                new_user_session GET    /users/sign_in(.:format)                                                                                  devise/sessions#new
+                                    user_session POST   /users/sign_in(.:format)                                                                                  devise/sessions#create
+                            destroy_user_session DELETE /users/sign_out(.:format)                                                                                 devise/sessions#destroy
+                                   user_password POST   /users/password(.:format)                                                                                 devise/passwords#create
+                               new_user_password GET    /users/password/new(.:format)                                                                             devise/passwords#new
+                              edit_user_password GET    /users/password/edit(.:format)                                                                            devise/passwords#edit
+                                                 PUT    /users/password(.:format)                                                                                 devise/passwords#update
+                        cancel_user_registration GET    /users/cancel(.:format)                                                                                   devise/registrations#cancel
+                               user_registration POST   /users(.:format)                                                                                          devise/registrations#create
+                           new_user_registration GET    /users/sign_up(.:format)                                                                                  devise/registrations#new
+                          edit_user_registration GET    /users/edit(.:format)                                                                                     devise/registrations#edit
+                                                 PUT    /users(.:format)                                                                                          devise/registrations#update
+                                                 DELETE /users(.:format)                                                                                          devise/registrations#destroy
+                                            root        /                                                                                                         home#index
+                                                        /home(/:action)(.:format)                                                                                 home#:action
+                                    destinations GET    /destinations(.:format)                                                                                   destinations#index
+                                                 POST   /destinations(.:format)                                                                                   destinations#create
+                                 new_destination GET    /destinations/new(.:format)                                                                               destinations#new
+                                edit_destination GET    /destinations/:id/edit(.:format)                                                                          destinations#edit
+                                     destination GET    /destinations/:id(.:format)                                                                               destinations#show
+                                                 PUT    /destinations/:id(.:format)                                                                               destinations#update
+                                                 DELETE /destinations/:id(.:format)                                                                               destinations#destroy
+                                           pages GET    /pages(.:format)                                                                                          pages#index
+                                                 POST   /pages(.:format)                                                                                          pages#create
+                                        new_page GET    /pages/new(.:format)                                                                                      pages#new
+                                       edit_page GET    /pages/:id/edit(.:format)                                                                                 pages#edit
+                                            page GET    /pages/:id(.:format)                                                                                      pages#show
+                                                 PUT    /pages/:id(.:format)                                                                                      pages#update
+                                                 DELETE /pages/:id(.:format)                                                                                      pages#destroy
+                                     tour_orders GET    /tour_orders(.:format)                                                                                    tour_orders#index
+                                                 POST   /tour_orders(.:format)                                                                                    tour_orders#create
+                                  new_tour_order GET    /tour_orders/new(.:format)                                                                                tour_orders#new
+                                 edit_tour_order GET    /tour_orders/:id/edit(.:format)                                                                           tour_orders#edit
+                                      tour_order GET    /tour_orders/:id(.:format)                                                                                tour_orders#show
+                                                 PUT    /tour_orders/:id(.:format)                                                                                tour_orders#update
+                                                 DELETE /tour_orders/:id(.:format)                                                                                tour_orders#destroy
+                                      order_tour GET    /tours/:id/order(.:format)                                                                                tours#order
+                                                 POST   /tours/:id/order(.:format)                                                                                tours#order
+                                                 GET    /tours/:tour_id/order(.:format)                                                                           orders#new
+                                                 POST   /tours/:tour_id/order(.:format)                                                                           orders#edit
+                                     tour_prices        /tours/:tour_id/prices(.:format)                                                                          orders#prices
+                                           tours GET    /tours(.:format)                                                                                          tours#index
+                                                 POST   /tours(.:format)                                                                                          tours#create
+                                        new_tour GET    /tours/new(.:format)                                                                                      tours#new
+                                       edit_tour GET    /tours/:id/edit(.:format)                                                                                 tours#edit
+                                            tour GET    /tours/:id(.:format)                                                                                      tours#show
+                                                 PUT    /tours/:id(.:format)                                                                                      tours#update
+                                                 DELETE /tours/:id(.:format)                                                                                      tours#destroy
+                   cover_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id/cover(.:format)                                          admin/destinations/photos#cover
+                        admin_destination_photos GET    /aeadmin/destinations/:destination_id/photos(.:format)                                                    admin/destinations/photos#index
+                                                 POST   /aeadmin/destinations/:destination_id/photos(.:format)                                                    admin/destinations/photos#create
+                     new_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/new(.:format)                                                admin/destinations/photos#new
+                    edit_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id/edit(.:format)                                           admin/destinations/photos#edit
+                         admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/destinations/photos#show
+                                                 PUT    /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/destinations/photos#update
+                                                 DELETE /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/destinations/photos#destroy
+                              admin_destinations GET    /aeadmin/destinations(.:format)                                                                           admin/destinations#index
+                                                 POST   /aeadmin/destinations(.:format)                                                                           admin/destinations#create
+                           new_admin_destination GET    /aeadmin/destinations/new(.:format)                                                                       admin/destinations#new
+                          edit_admin_destination GET    /aeadmin/destinations/:id/edit(.:format)                                                                  admin/destinations#edit
+                               admin_destination GET    /aeadmin/destinations/:id(.:format)                                                                       admin/destinations#show
+                                                 PUT    /aeadmin/destinations/:id(.:format)                                                                       admin/destinations#update
+                                                 DELETE /aeadmin/destinations/:id(.:format)                                                                       admin/destinations#destroy
+                                     admin_pages GET    /aeadmin/pages(.:format)                                                                                  admin/pages#index
+                                                 POST   /aeadmin/pages(.:format)                                                                                  admin/pages#create
+                                  new_admin_page GET    /aeadmin/pages/new(.:format)                                                                              admin/pages#new
+                                 edit_admin_page GET    /aeadmin/pages/:id/edit(.:format)                                                                         admin/pages#edit
+                                      admin_page GET    /aeadmin/pages/:id(.:format)                                                                              admin/pages#show
+                                                 PUT    /aeadmin/pages/:id(.:format)                                                                              admin/pages#update
+                                                 DELETE /aeadmin/pages/:id(.:format)                                                                              admin/pages#destroy
+                           cover_admin_bus_photo GET    /aeadmin/buses/:bus_id/photos/:id/cover(.:format)                                                         admin/photos#cover
+                                admin_bus_photos GET    /aeadmin/buses/:bus_id/photos(.:format)                                                                   admin/photos#index
+                                                 POST   /aeadmin/buses/:bus_id/photos(.:format)                                                                   admin/photos#create
+                             new_admin_bus_photo GET    /aeadmin/buses/:bus_id/photos/new(.:format)                                                               admin/photos#new
+                            edit_admin_bus_photo GET    /aeadmin/buses/:bus_id/photos/:id/edit(.:format)                                                          admin/photos#edit
+                                 admin_bus_photo GET    /aeadmin/buses/:bus_id/photos/:id(.:format)                                                               admin/photos#show
+                                                 PUT    /aeadmin/buses/:bus_id/photos/:id(.:format)                                                               admin/photos#update
+                                                 DELETE /aeadmin/buses/:bus_id/photos/:id(.:format)                                                               admin/photos#destroy
+                    admin_bus_bus_reserved_dates GET    /aeadmin/buses/:bus_id/bus_reserved_dates(.:format)                                                       admin/bus_reserved_dates#index
+                                                 POST   /aeadmin/buses/:bus_id/bus_reserved_dates(.:format)                                                       admin/bus_reserved_dates#create
+                 new_admin_bus_bus_reserved_date GET    /aeadmin/buses/:bus_id/bus_reserved_dates/new(.:format)                                                   admin/bus_reserved_dates#new
+                edit_admin_bus_bus_reserved_date GET    /aeadmin/buses/:bus_id/bus_reserved_dates/:id/edit(.:format)                                              admin/bus_reserved_dates#edit
+                     admin_bus_bus_reserved_date GET    /aeadmin/buses/:bus_id/bus_reserved_dates/:id(.:format)                                                   admin/bus_reserved_dates#show
+                                                 PUT    /aeadmin/buses/:bus_id/bus_reserved_dates/:id(.:format)                                                   admin/bus_reserved_dates#update
+                                                 DELETE /aeadmin/buses/:bus_id/bus_reserved_dates/:id(.:format)                                                   admin/bus_reserved_dates#destroy
+                                shifts_admin_bus GET    /aeadmin/buses/:id/shifts(.:format)                                                                       admin/buses#shifts
+                                     admin_buses GET    /aeadmin/buses(.:format)                                                                                  admin/buses#index
+                                                 POST   /aeadmin/buses(.:format)                                                                                  admin/buses#create
+                                   new_admin_bus GET    /aeadmin/buses/new(.:format)                                                                              admin/buses#new
+                                  edit_admin_bus GET    /aeadmin/buses/:id/edit(.:format)                                                                         admin/buses#edit
+                                       admin_bus GET    /aeadmin/buses/:id(.:format)                                                                              admin/buses#show
+                                                 PUT    /aeadmin/buses/:id(.:format)                                                                              admin/buses#update
+                                                 DELETE /aeadmin/buses/:id(.:format)                                                                              admin/buses#destroy
+                                admin_tour_spots GET    /aeadmin/tours/:tour_id/spots(.:format)                                                                   admin/tours/spots#index
+                                                 POST   /aeadmin/tours/:tour_id/spots(.:format)                                                                   admin/tours/spots#create
+                             new_admin_tour_spot GET    /aeadmin/tours/:tour_id/spots/new(.:format)                                                               admin/tours/spots#new
+                            edit_admin_tour_spot GET    /aeadmin/tours/:tour_id/spots/:id/edit(.:format)                                                          admin/tours/spots#edit
+                                 admin_tour_spot GET    /aeadmin/tours/:tour_id/spots/:id(.:format)                                                               admin/tours/spots#show
+                                                 PUT    /aeadmin/tours/:tour_id/spots/:id(.:format)                                                               admin/tours/spots#update
+                                                 DELETE /aeadmin/tours/:tour_id/spots/:id(.:format)                                                               admin/tours/spots#destroy
+                                     admin_tours GET    /aeadmin/tours(.:format)                                                                                  admin/tours#index
+                                                 POST   /aeadmin/tours(.:format)                                                                                  admin/tours#create
+                                  new_admin_tour GET    /aeadmin/tours/new(.:format)                                                                              admin/tours#new
+                                 edit_admin_tour GET    /aeadmin/tours/:id/edit(.:format)                                                                         admin/tours#edit
+                                      admin_tour GET    /aeadmin/tours/:id(.:format)                                                                              admin/tours#show
+                                                 PUT    /aeadmin/tours/:id(.:format)                                                                              admin/tours#update
+                                                 DELETE /aeadmin/tours/:id(.:format)                                                                              admin/tours#destroy
+                          select_admin_schedules GET    /aeadmin/schedules/select(.:format)                                                                       admin/schedules#select
+                          search_admin_schedules GET    /aeadmin/schedules/search(.:format)                                                                       admin/schedules#search
+                        generate_admin_schedules GET    /aeadmin/schedules/generate(.:format)                                                                     admin/schedules#generate
+                        selected_admin_schedules PUT    /aeadmin/schedules/selected(.:format)                                                                     admin/schedules#selected
+                           orders_admin_schedule GET    /aeadmin/schedules/:id/orders(.:format)                                                                   admin/schedules#orders
+    admin_schedule_schedule_assignment_bus_seats GET    /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats(.:format)          admin/bus_seats#index
+                                                 POST   /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats(.:format)          admin/bus_seats#create
+ new_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats/new(.:format)      admin/bus_seats#new
+edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats/:id/edit(.:format) admin/bus_seats#edit
+     admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats/:id(.:format)      admin/bus_seats#show
+                                                 PUT    /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats/:id(.:format)      admin/bus_seats#update
+                                                 DELETE /aeadmin/schedules/:schedule_id/schedule_assignments/:schedule_assignment_id/bus_seats/:id(.:format)      admin/bus_seats#destroy
+        seats_admin_schedule_schedule_assignment PUT    /aeadmin/schedules/:schedule_id/schedule_assignments/:id/seats(.:format)                                  admin/schedule_assignments#seats
+             admin_schedule_schedule_assignments GET    /aeadmin/schedules/:schedule_id/schedule_assignments(.:format)                                            admin/schedule_assignments#index
+                                                 POST   /aeadmin/schedules/:schedule_id/schedule_assignments(.:format)                                            admin/schedule_assignments#create
+          new_admin_schedule_schedule_assignment GET    /aeadmin/schedules/:schedule_id/schedule_assignments/new(.:format)                                        admin/schedule_assignments#new
+         edit_admin_schedule_schedule_assignment GET    /aeadmin/schedules/:schedule_id/schedule_assignments/:id/edit(.:format)                                   admin/schedule_assignments#edit
+              admin_schedule_schedule_assignment GET    /aeadmin/schedules/:schedule_id/schedule_assignments/:id(.:format)                                        admin/schedule_assignments#show
+                                                 PUT    /aeadmin/schedules/:schedule_id/schedule_assignments/:id(.:format)                                        admin/schedule_assignments#update
+                                                 DELETE /aeadmin/schedules/:schedule_id/schedule_assignments/:id(.:format)                                        admin/schedule_assignments#destroy
+                                 admin_schedules GET    /aeadmin/schedules(.:format)                                                                              admin/schedules#index
+                                                 POST   /aeadmin/schedules(.:format)                                                                              admin/schedules#create
+                              new_admin_schedule GET    /aeadmin/schedules/new(.:format)                                                                          admin/schedules#new
+                             edit_admin_schedule GET    /aeadmin/schedules/:id/edit(.:format)                                                                     admin/schedules#edit
+                                  admin_schedule GET    /aeadmin/schedules/:id(.:format)                                                                          admin/schedules#show
+                                                 PUT    /aeadmin/schedules/:id(.:format)                                                                          admin/schedules#update
+                                                 DELETE /aeadmin/schedules/:id(.:format)                                                                          admin/schedules#destroy
+                         select_admin_user_infos GET    /aeadmin/user_infos/select(.:format)                                                                      admin/user_infos#select
+                         search_admin_user_infos GET    /aeadmin/user_infos/search(.:format)                                                                      admin/user_infos#search
+                        add_tel_admin_user_infos GET    /aeadmin/user_infos/add_tel(.:format)                                                                     admin/user_infos#add_tel
+                      add_email_admin_user_infos GET    /aeadmin/user_infos/add_email(.:format)                                                                   admin/user_infos#add_email
+                    add_address_admin_user_infos GET    /aeadmin/user_infos/add_address(.:format)                                                                 admin/user_infos#add_address
+                          brief_admin_user_infos GET    /aeadmin/user_infos/brief(.:format)                                                                       admin/user_infos#brief
+                                admin_user_infos GET    /aeadmin/user_infos(.:format)                                                                             admin/user_infos#index
+                                                 POST   /aeadmin/user_infos(.:format)                                                                             admin/user_infos#create
+                             new_admin_user_info GET    /aeadmin/user_infos/new(.:format)                                                                         admin/user_infos#new
+                            edit_admin_user_info GET    /aeadmin/user_infos/:id/edit(.:format)                                                                    admin/user_infos#edit
+                                 admin_user_info GET    /aeadmin/user_infos/:id(.:format)                                                                         admin/user_infos#show
+                                                 PUT    /aeadmin/user_infos/:id(.:format)                                                                         admin/user_infos#update
+                                                 DELETE /aeadmin/user_infos/:id(.:format)                                                                         admin/user_infos#destroy
+                                    admin_emails GET    /aeadmin/emails(.:format)                                                                                 admin/emails#index
+                                                 POST   /aeadmin/emails(.:format)                                                                                 admin/emails#create
+                                 new_admin_email GET    /aeadmin/emails/new(.:format)                                                                             admin/emails#new
+                                edit_admin_email GET    /aeadmin/emails/:id/edit(.:format)                                                                        admin/emails#edit
+                                     admin_email GET    /aeadmin/emails/:id(.:format)                                                                             admin/emails#show
+                                                 PUT    /aeadmin/emails/:id(.:format)                                                                             admin/emails#update
+                                                 DELETE /aeadmin/emails/:id(.:format)                                                                             admin/emails#destroy
+                                admin_telephones GET    /aeadmin/telephones(.:format)                                                                             admin/telephones#index
+                                                 POST   /aeadmin/telephones(.:format)                                                                             admin/telephones#create
+                             new_admin_telephone GET    /aeadmin/telephones/new(.:format)                                                                         admin/telephones#new
+                            edit_admin_telephone GET    /aeadmin/telephones/:id/edit(.:format)                                                                    admin/telephones#edit
+                                 admin_telephone GET    /aeadmin/telephones/:id(.:format)                                                                         admin/telephones#show
+                                                 PUT    /aeadmin/telephones/:id(.:format)                                                                         admin/telephones#update
+                                                 DELETE /aeadmin/telephones/:id(.:format)                                                                         admin/telephones#destroy
+                                 admin_addresses GET    /aeadmin/addresses(.:format)                                                                              admin/addresses#index
+                                                 POST   /aeadmin/addresses(.:format)                                                                              admin/addresses#create
+                               new_admin_address GET    /aeadmin/addresses/new(.:format)                                                                          admin/addresses#new
+                              edit_admin_address GET    /aeadmin/addresses/:id/edit(.:format)                                                                     admin/addresses#edit
+                                   admin_address GET    /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#show
+                                                 PUT    /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#update
+                                                 DELETE /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#destroy
+                           add_room_admin_orders GET    /aeadmin/orders/add_room(.:format)                                                                        admin/orders#add_room
+                                    admin_orders GET    /aeadmin/orders(.:format)                                                                                 admin/orders#index
+                                                 POST   /aeadmin/orders(.:format)                                                                                 admin/orders#create
+                                 new_admin_order GET    /aeadmin/orders/new(.:format)                                                                             admin/orders#new
+                                edit_admin_order GET    /aeadmin/orders/:id/edit(.:format)                                                                        admin/orders#edit
+                                     admin_order GET    /aeadmin/orders/:id(.:format)                                                                             admin/orders#show
+                                                 PUT    /aeadmin/orders/:id(.:format)                                                                             admin/orders#update
+                                                 DELETE /aeadmin/orders/:id(.:format)                                                                             admin/orders#destroy
+                                 admin_employees GET    /aeadmin/employees(.:format)                                                                              admin/employees#index
+                                                 POST   /aeadmin/employees(.:format)                                                                              admin/employees#create
+                              new_admin_employee GET    /aeadmin/employees/new(.:format)                                                                          admin/employees#new
+                             edit_admin_employee GET    /aeadmin/employees/:id/edit(.:format)                                                                     admin/employees#edit
+                                  admin_employee GET    /aeadmin/employees/:id(.:format)                                                                          admin/employees#show
+                                                 PUT    /aeadmin/employees/:id(.:format)                                                                          admin/employees#update
+                                                 DELETE /aeadmin/employees/:id(.:format)                                                                          admin/employees#destroy
+                            admin_employee_infos GET    /aeadmin/employee_infos(.:format)                                                                         admin/employee_infos#index
+                                                 POST   /aeadmin/employee_infos(.:format)                                                                         admin/employee_infos#create
+                         new_admin_employee_info GET    /aeadmin/employee_infos/new(.:format)                                                                     admin/employee_infos#new
+                        edit_admin_employee_info GET    /aeadmin/employee_infos/:id/edit(.:format)                                                                admin/employee_infos#edit
+                             admin_employee_info GET    /aeadmin/employee_infos/:id(.:format)                                                                     admin/employee_infos#show
+                                                 PUT    /aeadmin/employee_infos/:id(.:format)                                                                     admin/employee_infos#update
+                                                 DELETE /aeadmin/employee_infos/:id(.:format)                                                                     admin/employee_infos#destroy
+                     add_contact_admin_companies GET    /aeadmin/companies/add_contact(.:format)                                                                  admin/companies#add_contact
+                                 admin_companies GET    /aeadmin/companies(.:format)                                                                              admin/companies#index
+                                                 POST   /aeadmin/companies(.:format)                                                                              admin/companies#create
+                               new_admin_company GET    /aeadmin/companies/new(.:format)                                                                          admin/companies#new
+                              edit_admin_company GET    /aeadmin/companies/:id/edit(.:format)                                                                     admin/companies#edit
+                                   admin_company GET    /aeadmin/companies/:id(.:format)                                                                          admin/companies#show
+                                                 PUT    /aeadmin/companies/:id(.:format)                                                                          admin/companies#update
+                                                 DELETE /aeadmin/companies/:id(.:format)                                                                          admin/companies#destroy
+                                  admin_payments GET    /aeadmin/payments(.:format)                                                                               admin/payments#index
+                                                 POST   /aeadmin/payments(.:format)                                                                               admin/payments#create
+                               new_admin_payment GET    /aeadmin/payments/new(.:format)                                                                           admin/payments#new
+                              edit_admin_payment GET    /aeadmin/payments/:id/edit(.:format)                                                                      admin/payments#edit
+                                   admin_payment GET    /aeadmin/payments/:id(.:format)                                                                           admin/payments#show
+                                                 PUT    /aeadmin/payments/:id(.:format)                                                                           admin/payments#update
+                                                 DELETE /aeadmin/payments/:id(.:format)                                                                           admin/payments#destroy
+                                  admin_vouchers GET    /aeadmin/vouchers(.:format)                                                                               admin/vouchers#index
+                                                 POST   /aeadmin/vouchers(.:format)                                                                               admin/vouchers#create
+                               new_admin_voucher GET    /aeadmin/vouchers/new(.:format)                                                                           admin/vouchers#new
+                              edit_admin_voucher GET    /aeadmin/vouchers/:id/edit(.:format)                                                                      admin/vouchers#edit
+                                   admin_voucher GET    /aeadmin/vouchers/:id(.:format)                                                                           admin/vouchers#show
+                                                 PUT    /aeadmin/vouchers/:id(.:format)                                                                           admin/vouchers#update
+                                                 DELETE /aeadmin/vouchers/:id(.:format)                                                                           admin/vouchers#destroy
+                       admin_company_receivables GET    /aeadmin/company_receivables(.:format)                                                                    admin/company_receivables#index
+                                                 POST   /aeadmin/company_receivables(.:format)                                                                    admin/company_receivables#create
+                    new_admin_company_receivable GET    /aeadmin/company_receivables/new(.:format)                                                                admin/company_receivables#new
+                   edit_admin_company_receivable GET    /aeadmin/company_receivables/:id/edit(.:format)                                                           admin/company_receivables#edit
+                        admin_company_receivable GET    /aeadmin/company_receivables/:id(.:format)                                                                admin/company_receivables#show
+                                                 PUT    /aeadmin/company_receivables/:id(.:format)                                                                admin/company_receivables#update
+                                                 DELETE /aeadmin/company_receivables/:id(.:format)                                                                admin/company_receivables#destroy
+                                admin_pay_cashes GET    /aeadmin/pay_cashes(.:format)                                                                             admin/pay_cashes#index
+                                                 POST   /aeadmin/pay_cashes(.:format)                                                                             admin/pay_cashes#create
+                              new_admin_pay_cash GET    /aeadmin/pay_cashes/new(.:format)                                                                         admin/pay_cashes#new
+                             edit_admin_pay_cash GET    /aeadmin/pay_cashes/:id/edit(.:format)                                                                    admin/pay_cashes#edit
+                                  admin_pay_cash GET    /aeadmin/pay_cashes/:id(.:format)                                                                         admin/pay_cashes#show
+                                                 PUT    /aeadmin/pay_cashes/:id(.:format)                                                                         admin/pay_cashes#update
+                                                 DELETE /aeadmin/pay_cashes/:id(.:format)                                                                         admin/pay_cashes#destroy
+                          admin_pay_credit_cards GET    /aeadmin/pay_credit_cards(.:format)                                                                       admin/pay_credit_cards#index
+                                                 POST   /aeadmin/pay_credit_cards(.:format)                                                                       admin/pay_credit_cards#create
+                       new_admin_pay_credit_card GET    /aeadmin/pay_credit_cards/new(.:format)                                                                   admin/pay_credit_cards#new
+                      edit_admin_pay_credit_card GET    /aeadmin/pay_credit_cards/:id/edit(.:format)                                                              admin/pay_credit_cards#edit
+                           admin_pay_credit_card GET    /aeadmin/pay_credit_cards/:id(.:format)                                                                   admin/pay_credit_cards#show
+                                                 PUT    /aeadmin/pay_credit_cards/:id(.:format)                                                                   admin/pay_credit_cards#update
+                                                 DELETE /aeadmin/pay_credit_cards/:id(.:format)                                                                   admin/pay_credit_cards#destroy
+                                admin_pay_checks GET    /aeadmin/pay_checks(.:format)                                                                             admin/pay_checks#index
+                                                 POST   /aeadmin/pay_checks(.:format)                                                                             admin/pay_checks#create
+                             new_admin_pay_check GET    /aeadmin/pay_checks/new(.:format)                                                                         admin/pay_checks#new
+                            edit_admin_pay_check GET    /aeadmin/pay_checks/:id/edit(.:format)                                                                    admin/pay_checks#edit
+                                 admin_pay_check GET    /aeadmin/pay_checks/:id(.:format)                                                                         admin/pay_checks#show
+                                                 PUT    /aeadmin/pay_checks/:id(.:format)                                                                         admin/pay_checks#update
+                                                 DELETE /aeadmin/pay_checks/:id(.:format)                                                                         admin/pay_checks#destroy
+                             admin_pay_companies GET    /aeadmin/pay_companies(.:format)                                                                          admin/pay_companies#index
+                                                 POST   /aeadmin/pay_companies(.:format)                                                                          admin/pay_companies#create
+                           new_admin_pay_company GET    /aeadmin/pay_companies/new(.:format)                                                                      admin/pay_companies#new
+                          edit_admin_pay_company GET    /aeadmin/pay_companies/:id/edit(.:format)                                                                 admin/pay_companies#edit
+                               admin_pay_company GET    /aeadmin/pay_companies/:id(.:format)                                                                      admin/pay_companies#show
+                                                 PUT    /aeadmin/pay_companies/:id(.:format)                                                                      admin/pay_companies#update
+                                                 DELETE /aeadmin/pay_companies/:id(.:format)                                                                      admin/pay_companies#destroy
+                              admin_pay_vouchers GET    /aeadmin/pay_vouchers(.:format)                                                                           admin/pay_vouchers#index
+                                                 POST   /aeadmin/pay_vouchers(.:format)                                                                           admin/pay_vouchers#create
+                           new_admin_pay_voucher GET    /aeadmin/pay_vouchers/new(.:format)                                                                       admin/pay_vouchers#new
+                          edit_admin_pay_voucher GET    /aeadmin/pay_vouchers/:id/edit(.:format)                                                                  admin/pay_vouchers#edit
+                               admin_pay_voucher GET    /aeadmin/pay_vouchers/:id(.:format)                                                                       admin/pay_vouchers#show
+                                                 PUT    /aeadmin/pay_vouchers/:id(.:format)                                                                       admin/pay_vouchers#update
+                                                 DELETE /aeadmin/pay_vouchers/:id(.:format)                                                                       admin/pay_vouchers#destroy
+                                  admin_accounts GET    /aeadmin/accounts(.:format)                                                                               admin/accounts#index
+                                                 POST   /aeadmin/accounts(.:format)                                                                               admin/accounts#create
+                               new_admin_account GET    /aeadmin/accounts/new(.:format)                                                                           admin/accounts#new
+                              edit_admin_account GET    /aeadmin/accounts/:id/edit(.:format)                                                                      admin/accounts#edit
+                                   admin_account GET    /aeadmin/accounts/:id(.:format)                                                                           admin/accounts#show
+                                                 PUT    /aeadmin/accounts/:id(.:format)                                                                           admin/accounts#update
+                                                 DELETE /aeadmin/accounts/:id(.:format)                                                                           admin/accounts#destroy
+                                                 GET    /aeadmin/telephones(.:format)                                                                             admin/telephones#index
+                                                 POST   /aeadmin/telephones(.:format)                                                                             admin/telephones#create
+                                                 GET    /aeadmin/telephones/new(.:format)                                                                         admin/telephones#new
+                                                 GET    /aeadmin/telephones/:id/edit(.:format)                                                                    admin/telephones#edit
+                                                 GET    /aeadmin/telephones/:id(.:format)                                                                         admin/telephones#show
+                                                 PUT    /aeadmin/telephones/:id(.:format)                                                                         admin/telephones#update
+                                                 DELETE /aeadmin/telephones/:id(.:format)                                                                         admin/telephones#destroy
+                                                 GET    /aeadmin/emails(.:format)                                                                                 admin/emails#index
+                                                 POST   /aeadmin/emails(.:format)                                                                                 admin/emails#create
+                                                 GET    /aeadmin/emails/new(.:format)                                                                             admin/emails#new
+                                                 GET    /aeadmin/emails/:id/edit(.:format)                                                                        admin/emails#edit
+                                                 GET    /aeadmin/emails/:id(.:format)                                                                             admin/emails#show
+                                                 PUT    /aeadmin/emails/:id(.:format)                                                                             admin/emails#update
+                                                 DELETE /aeadmin/emails/:id(.:format)                                                                             admin/emails#destroy
+                                                 GET    /aeadmin/addresses(.:format)                                                                              admin/addresses#index
+                                                 POST   /aeadmin/addresses(.:format)                                                                              admin/addresses#create
+                                                 GET    /aeadmin/addresses/new(.:format)                                                                          admin/addresses#new
+                                                 GET    /aeadmin/addresses/:id/edit(.:format)                                                                     admin/addresses#edit
+                                                 GET    /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#show
+                                                 PUT    /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#update
+                                                 DELETE /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#destroy
+                               admin_input_types GET    /aeadmin/input_types(.:format)                                                                            admin/input_types#index
+                                                 POST   /aeadmin/input_types(.:format)                                                                            admin/input_types#create
+                            new_admin_input_type GET    /aeadmin/input_types/new(.:format)                                                                        admin/input_types#new
+                           edit_admin_input_type GET    /aeadmin/input_types/:id/edit(.:format)                                                                   admin/input_types#edit
+                                admin_input_type GET    /aeadmin/input_types/:id(.:format)                                                                        admin/input_types#show
+                                                 PUT    /aeadmin/input_types/:id(.:format)                                                                        admin/input_types#update
+                                                 DELETE /aeadmin/input_types/:id(.:format)                                                                        admin/input_types#destroy
+                                admin_tour_types GET    /aeadmin/tour_types(.:format)                                                                             admin/tour_types#index
+                                                 POST   /aeadmin/tour_types(.:format)                                                                             admin/tour_types#create
+                             new_admin_tour_type GET    /aeadmin/tour_types/new(.:format)                                                                         admin/tour_types#new
+                            edit_admin_tour_type GET    /aeadmin/tour_types/:id/edit(.:format)                                                                    admin/tour_types#edit
+                                 admin_tour_type GET    /aeadmin/tour_types/:id(.:format)                                                                         admin/tour_types#show
+                                                 PUT    /aeadmin/tour_types/:id(.:format)                                                                         admin/tour_types#update
+                                                 DELETE /aeadmin/tour_types/:id(.:format)                                                                         admin/tour_types#destroy
+                                 admin_positions GET    /aeadmin/positions(.:format)                                                                              admin/positions#index
+                                                 POST   /aeadmin/positions(.:format)                                                                              admin/positions#create
+                              new_admin_position GET    /aeadmin/positions/new(.:format)                                                                          admin/positions#new
+                             edit_admin_position GET    /aeadmin/positions/:id/edit(.:format)                                                                     admin/positions#edit
+                                  admin_position GET    /aeadmin/positions/:id(.:format)                                                                          admin/positions#show
+                                                 PUT    /aeadmin/positions/:id(.:format)                                                                          admin/positions#update
+                                                 DELETE /aeadmin/positions/:id(.:format)                                                                          admin/positions#destroy
+                 admin_schedule_assignment_costs GET    /aeadmin/schedule_assignment_costs(.:format)                                                              admin/schedule_assignment_costs#index
+                                                 POST   /aeadmin/schedule_assignment_costs(.:format)                                                              admin/schedule_assignment_costs#create
+              new_admin_schedule_assignment_cost GET    /aeadmin/schedule_assignment_costs/new(.:format)                                                          admin/schedule_assignment_costs#new
+             edit_admin_schedule_assignment_cost GET    /aeadmin/schedule_assignment_costs/:id/edit(.:format)                                                     admin/schedule_assignment_costs#edit
+                  admin_schedule_assignment_cost GET    /aeadmin/schedule_assignment_costs/:id(.:format)                                                          admin/schedule_assignment_costs#show
+                                                 PUT    /aeadmin/schedule_assignment_costs/:id(.:format)                                                          admin/schedule_assignment_costs#update
+                                                 DELETE /aeadmin/schedule_assignment_costs/:id(.:format)                                                          admin/schedule_assignment_costs#destroy
+              admin_schedule_assignment_balances GET    /aeadmin/schedule_assignment_balances(.:format)                                                           admin/schedule_assignment_balances#index
+                                                 POST   /aeadmin/schedule_assignment_balances(.:format)                                                           admin/schedule_assignment_balances#create
+           new_admin_schedule_assignment_balance GET    /aeadmin/schedule_assignment_balances/new(.:format)                                                       admin/schedule_assignment_balances#new
+          edit_admin_schedule_assignment_balance GET    /aeadmin/schedule_assignment_balances/:id/edit(.:format)                                                  admin/schedule_assignment_balances#edit
+               admin_schedule_assignment_balance GET    /aeadmin/schedule_assignment_balances/:id(.:format)                                                       admin/schedule_assignment_balances#show
+                                                 PUT    /aeadmin/schedule_assignment_balances/:id(.:format)                                                       admin/schedule_assignment_balances#update
+                                                 DELETE /aeadmin/schedule_assignment_balances/:id(.:format)                                                       admin/schedule_assignment_balances#destroy
+                                      admin_logs GET    /aeadmin/logs(.:format)                                                                                   admin/logs#index
+                                                 POST   /aeadmin/logs(.:format)                                                                                   admin/logs#create
+                                   new_admin_log GET    /aeadmin/logs/new(.:format)                                                                               admin/logs#new
+                                  edit_admin_log GET    /aeadmin/logs/:id/edit(.:format)                                                                          admin/logs#edit
+                                       admin_log GET    /aeadmin/logs/:id(.:format)                                                                               admin/logs#show
+                                                 PUT    /aeadmin/logs/:id(.:format)                                                                               admin/logs#update
+                                                 DELETE /aeadmin/logs/:id(.:format)                                                                               admin/logs#destroy
+                                zone_admin_todos GET    /aeadmin/todos/zone(.:format)                                                                             admin/todos#zone
+                              admin_todo_remarks POST   /aeadmin/todos/:todo_id/remarks(.:format)                                                                 admin/remarks#create
+                          new_admin_todo_remarks GET    /aeadmin/todos/:todo_id/remarks/new(.:format)                                                             admin/remarks#new
+                         edit_admin_todo_remarks GET    /aeadmin/todos/:todo_id/remarks/edit(.:format)                                                            admin/remarks#edit
+                                                 GET    /aeadmin/todos/:todo_id/remarks(.:format)                                                                 admin/remarks#show
+                                                 PUT    /aeadmin/todos/:todo_id/remarks(.:format)                                                                 admin/remarks#update
+                                                 DELETE /aeadmin/todos/:todo_id/remarks(.:format)                                                                 admin/remarks#destroy
+                         add_employee_admin_todo GET    /aeadmin/todos/:id/add_employee(.:format)                                                                 admin/todos#add_employee
+                           add_worker_admin_todo POST   /aeadmin/todos/:id/add_worker(.:format)                                                                   admin/todos#add_worker
+                            rm_worker_admin_todo DELETE /aeadmin/todos/:id/rm_worker(.:format)                                                                    admin/todos#rm_worker
+                                     admin_todos GET    /aeadmin/todos(.:format)                                                                                  admin/todos#index
+                                                 POST   /aeadmin/todos(.:format)                                                                                  admin/todos#create
+                                  new_admin_todo GET    /aeadmin/todos/new(.:format)                                                                              admin/todos#new
+                                 edit_admin_todo GET    /aeadmin/todos/:id/edit(.:format)                                                                         admin/todos#edit
+                                      admin_todo GET    /aeadmin/todos/:id(.:format)                                                                              admin/todos#show
+                                                 PUT    /aeadmin/todos/:id(.:format)                                                                              admin/todos#update
+                                                 DELETE /aeadmin/todos/:id(.:format)                                                                              admin/todos#destroy
+                              zone_admin_my_logs GET    /aeadmin/my_logs/zone(.:format)                                                                           admin/my_logs#zone
+                                   admin_my_logs GET    /aeadmin/my_logs(.:format)                                                                                admin/my_logs#index
+                                                 POST   /aeadmin/my_logs(.:format)                                                                                admin/my_logs#create
+                                new_admin_my_log GET    /aeadmin/my_logs/new(.:format)                                                                            admin/my_logs#new
+                               edit_admin_my_log GET    /aeadmin/my_logs/:id/edit(.:format)                                                                       admin/my_logs#edit
+                                    admin_my_log GET    /aeadmin/my_logs/:id(.:format)                                                                            admin/my_logs#show
+                                                 PUT    /aeadmin/my_logs/:id(.:format)                                                                            admin/my_logs#update
+                                                 DELETE /aeadmin/my_logs/:id(.:format)                                                                            admin/my_logs#destroy
+                 reload_admin_app_configurations GET    /aeadmin/app_configurations/reload(.:format)                                                              admin/app_configurations#reload
+                        admin_app_configurations GET    /aeadmin/app_configurations(.:format)                                                                     admin/app_configurations#index
+                                                 POST   /aeadmin/app_configurations(.:format)                                                                     admin/app_configurations#create
+                     new_admin_app_configuration GET    /aeadmin/app_configurations/new(.:format)                                                                 admin/app_configurations#new
+                    edit_admin_app_configuration GET    /aeadmin/app_configurations/:id/edit(.:format)                                                            admin/app_configurations#edit
+                         admin_app_configuration GET    /aeadmin/app_configurations/:id(.:format)                                                                 admin/app_configurations#show
+                                                 PUT    /aeadmin/app_configurations/:id(.:format)                                                                 admin/app_configurations#update
+                                                 DELETE /aeadmin/app_configurations/:id(.:format)                                                                 admin/app_configurations#destroy
+                                   admin_remarks GET    /aeadmin/remarks(.:format)                                                                                admin/remarks#index
+                                                 POST   /aeadmin/remarks(.:format)                                                                                admin/remarks#create
+                                new_admin_remark GET    /aeadmin/remarks/new(.:format)                                                                            admin/remarks#new
+                               edit_admin_remark GET    /aeadmin/remarks/:id/edit(.:format)                                                                       admin/remarks#edit
+                                    admin_remark GET    /aeadmin/remarks/:id(.:format)                                                                            admin/remarks#show
+                                                 PUT    /aeadmin/remarks/:id(.:format)                                                                            admin/remarks#update
+                                                 DELETE /aeadmin/remarks/:id(.:format)                                                                            admin/remarks#destroy
+                                         aeadmin        /aeadmin(.:format)                                                                                        admin/home#index
+                                                        /barcode/:str(.:format)                                                                                   barcode#gen
+                                                        /:controller/:id/:action(.:format)                                                                        (?-mix:admin\/[^\/]+)#:action

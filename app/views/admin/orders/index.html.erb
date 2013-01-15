@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <% @collection.each do |order| %>
-      <%= render :partial => 'row', :locals => {:obj => order} %>
+      <%= render :partial => 'row', :object => order %>
     <% end %>
   </tbody>
 </table>

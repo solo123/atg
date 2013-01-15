@@ -15,7 +15,7 @@ Omei::Application.routes.draw do
     match 'prices' => 'orders#prices'
   end
 
-  namespace :admin do
+  namespace :admin, :path => 'aeadmin' do
     resources :destinations do
       resources :photos do
         member do
@@ -26,19 +26,16 @@ Omei::Application.routes.draw do
     resources :pages
     resources :buses do
       resources :photos do
-        member do
-          get :cover
-        end
+        get :cover, :on => :member
       end
-      member do
-        get :shifts
-      end
+      resources :bus_reserved_dates
+      get :shifts, :on => :member
     end
     resources :tours do
+      resources :spots, :controller => 'tours/spots'
       collection do
         get 'search'
       end
-      resources :spots
     end
     resources :schedules do
       collection do
@@ -50,26 +47,31 @@ Omei::Application.routes.draw do
       end
       resources :schedule_assignments do
         resources :bus_seats
-        member do
-          put :seats
-        end
+        put :seats, :on => :member
       end
     end
     resources :user_infos do
       collection do
-        get 'select', 'search', 'add_tel', 'add_email', 'add_address', 'brief'
+        get :select, :search, :add_tel, :add_email, :add_address, :brief
+      end
+      resources :photos do
+        get :cover, :on => :member
       end
     end
     resources :emails, :telephones, :addresses
     resources :orders do
-      collection do
-        get :add_room
+      get :add_room, :on => :collection
+    end
+    resources :employees
+    resources :employee_infos do
+      resources :photos do
+        get :cover, :on => :member
       end
     end
-    resources :employees, :employee_infos
     resources :companies do
-      collection do
-        get 'add_contact'
+      get 'add_contact', :on => :collection
+      resources :photos do
+        get :cover, :on => :member
       end
     end
     resources :payments, :vouchers, :company_receivables
@@ -80,18 +82,27 @@ Omei::Application.routes.draw do
     resources :schedule_assignment_costs, :schedule_assignment_balances
     resources :logs
     resources :todos do
-      collection do
-        get 'zone'
+      get 'zone', :on => :collection
+      resource :remarks
+      member do
+        get 'add_employee'
+        post 'add_worker'
+        delete 'rm_worker'
       end
     end
     resources :my_logs do
+      get :zone, :on => :collection
+    end
+    resources :app_configurations do
       collection do
-        get 'zone'
+        get :reload
       end
     end
+    resources :remarks
+    resources :cities
   end
 
-  match '/admin', :to => 'admin/home#index', :as => :admin
+  match '/aeadmin', :to => 'admin/home#index', :as => :aeadmin
   match 'barcode/:str' => 'barcode#gen'
   match ':controller/:id/:action', :controller => /admin\/[^\/]+/ 
 

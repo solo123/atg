@@ -1,10 +1,10 @@
     <tr>
-        <td><%= link_to obj.order_number, admin_order_path(obj) %></td>
-        <td><%= obj.order_detail.full_name if obj.order_detail %></td>
-        <td><%= obj.schedule.title if obj.schedule %></td>
-        <td><%= obj.created_at %></td>
-        <td><%= obj.status %></td>
+        <td><%= link_to row.order_number, admin_order_path(row) %></td>
+        <td><%= row.order_detail.full_name if row.order_detail %></td>
+        <td><%= row.schedule.title if row.schedule %></td>
+        <td><%= row.created_at %></td>
+        <td><%= row.status %></td>
       <td class='actions'>
-          <%= link_to_edit_url edit_admin_order_path(obj), :title => "admin_edit_#{dom_id(obj)}", :remote => true %>
+          <%= link_to_edit_url edit_admin_order_path(row), :title => "admin_edit_#{dom_id(row)}", :remote => true %>
       </td>
     </tr>

@@ -18,11 +18,15 @@
 <div id="tabs-<%= assignment.id %>">
 
 	<p>
-		Bus: <%= assignment.bus.name if assignment.bus %>
-		Driver: <%= assignment.driver.nickname if assignment.driver %> / 
-		<%= assignment.driver_assistance.nickname if assignment.driver_assistance %>
-		Tour guide: <%= assignment.tour_guide.nickname if assignment.tour_guide %> / 
-		<%= assignment.tour_guide_assistance.nickname if assignment.tour_guide_assistance %>
+    Bus:
+    <span class='strong'> 
+    <% if assignment.bus %>
+      <%= assignment.bus.name %>(Tel: <%= assignment.bus.contact_name %> <b><%= assignment.bus.tel %></b>)</span>
+    <% end %>
+    Driver: <span class='strong'><%= assignment.driver.nickname if assignment.driver %> / 
+      <%= assignment.driver_assistance.nickname if assignment.driver_assistance %></span>
+    Tour guide: <span class='strong'><%= assignment.tour_guide.nickname if assignment.tour_guide %> / 
+      <%= assignment.tour_guide_assistance.nickname if assignment.tour_guide_assistance %> </span>
     |
     <%= link_button 'Edit', edit_admin_schedule_schedule_assignment_path(schedule, assignment), {:remote => true, :ui_icon => 'ui-icon-pencil'} %>
     |

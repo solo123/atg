@@ -76,7 +76,7 @@
       end
 
       def icon(icon_name)
-        icon_name ? image_tag("admin/icons/#{icon_name}.png") : ''
+        icon_name ? image_tag("admin/icons/#{icon_name}#{icon_name.include?('.') ? '' : '.png'}") : ''
       end
 
       def small_edit_link(url, options = {})
@@ -103,6 +103,9 @@
           html_options.delete('data-update') unless html_options['data-update']
           link_to(text_for_button_link(text, html_options), url, html_options_for_button_link(html_options))
         end
+      end
+      def small_button_link_to(text, url, html_options = {})
+        link_to text, url, {:class => 'button white small'}.update(html_options)
       end
 
       def icon_link_to(text, url, html_options = {})
@@ -187,6 +190,9 @@
         else
           send "admin_#{object.class.name.underscore.split('/').last.pluralize}_path"
         end
+      end
+      def objects_path(object)
+        "admin/#{object.class.name.underscore.pluralize}"
       end
 
 

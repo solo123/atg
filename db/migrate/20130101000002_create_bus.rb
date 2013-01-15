@@ -3,6 +3,8 @@ class CreateBus < ActiveRecord::Migration
     create_table :buses do |t|
       t.string :name
       t.integer :company_id
+      t.string :contact_name
+      t.string :tel
       t.string :bus_type
       t.integer :seats
       t.integer :seats_per_row
@@ -32,7 +34,7 @@ class CreateBus < ActiveRecord::Migration
       t.date :date
     end
     create_table :employee_shifts do |t|
-      t.integer :employee_id
+      t.integer :employee_info_id
       t.integer :schedule_assignment_id
       t.date :date
     end

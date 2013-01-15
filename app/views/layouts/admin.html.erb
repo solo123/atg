@@ -4,12 +4,15 @@
 <head>
   <title>admin-<%= @title %></title>
   <%= favicon_link_tag %>
-  <%= stylesheet_link_tag 'blueprint/print', 'media' => 'print' %>
-  <!--[if lt IE 8]>
-    <%= stylesheet_link_tag 'blueprint/ie' %>
-  <![endif]-->  
+<link rel="stylesheet" href="/css/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/css/blueprint/print.css" type="text/css" media="print"> 
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
 
   <%= stylesheet_link_tag    "admin/admin", :media => "all" %>
+  <link rel="stylesheet" href="/css/jquerytools/my_jquerytools.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/css/jqueryui/ui.css" type="text/css" media="screen, projection">
   <%= javascript_include_tag "admin/admin" %>
   <%= csrf_meta_tags %>
 
@@ -46,6 +49,26 @@
         <%= yield %>
       </div>
       <div id='sidebar'>
+        <div id='quick_go' class='zone'>
+          <table class='compact' style='width:auto;'>
+            <tr>
+              <td>Tour:</td>
+              <td><input id='qg_tour' type='text' size=5 onkeypress='return quick_go_enter(this);'/></td>
+              <td><%= image_tag 'admin/go.gif', :onclick => 'quick_go_tour();' %></td>
+            </tr>
+            <tr>
+              <td>Schedule:</td>
+              <td><input id='qg_schedule' type='text' size=5 onkeypress='return quick_go_enter(this);'/></td>
+              <td><%= image_tag 'admin/go.gif', :onclick => 'quick_go_schedule();' %></td>
+            </tr>
+            <tr>
+              <td>Order:</td>
+              <td><input id='qg_order' type='text' size=5 onkeypress='return quick_go_enter(this);'/></td>
+              <td><%= image_tag 'admin/go.gif', :onclick => 'quick_go_order();' %></td>
+            </tr>
+          </table>
+
+        </div>
         <div id='todos' class='zone'></div>
         <div id='last_logs' class='zone'></div>
       </div>
@@ -54,6 +77,7 @@
     </div>
 
     <div id='page_foot'>
+      <%= render '/admin/shared/footer' %>
     </div>
   </div>
 </body>

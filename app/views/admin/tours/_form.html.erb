@@ -8,10 +8,10 @@
  
 <!-- tab "panes" -->
 <div class="panes">
-  <div style='height:250px;'>
+  <div style='height:400px;'>
 	<%= render :partial => 'admin/shared/description', :locals => {:f => f} %>
   </div>
-  <div style='height:250px;'>
+  <div style='height:400px;'>
   <div class="container">
   	<div class='span-8'>
       <%= f.label :tour_type %><br />
@@ -26,11 +26,11 @@
 	</div>
 	<%= render :partial => 'tour_setting', :locals => {:f => f} %>
   </div>
-  <div style='height:250px;'>
+  <div style='height:400px;'>
 	<%= render :partial => 'tour_price', :locals => {:f => f} %>
-	<%= render :partial => 'admin/shared/status', :locals => {:f => f} %>	
   </div>
 </div>
+	<%= render :partial => 'admin/shared/status', :locals => {:f => f} %>	
 <br />
   <div class="actions">
     <%= f.submit %>

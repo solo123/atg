@@ -28,7 +28,7 @@
   </thead>
   <tbody>
   <% @collection.each do |p| %>
-    <%= render :partial => 'row', :locals => {:obj => p} %>
+    <%= render :partial => 'row', :object => p %>
   <% end %>
   </tbody>
 </table>

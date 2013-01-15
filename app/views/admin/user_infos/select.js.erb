@@ -9,12 +9,12 @@ $('#'+edit_div)
 	.dialog('open');
 
 $( "#user_select" ).autocomplete({
-	source: "/admin/user_infos/search",
+	source: host_path + "/user_infos/search",
 	minLength: 2,
 	select: function( event, ui ) {
 		if (ui.item) {
 			$('#user_id').val(ui.item.id);
-      $('#select_user_button').attr('href', '/admin/user_infos/select?id='+ui.item.id.toString());
+      $('#select_user_button').attr('href', host_path + '/user_infos/select?id='+ui.item.id.toString());
 		}
 	}
 });

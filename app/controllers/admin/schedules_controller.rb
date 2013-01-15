@@ -9,16 +9,22 @@ module Admin
     end 
     def generate
       @today = Date.today
-      @default_days = AppConfig[:max_reservation_days].to_i
+      @default_days = cfg.get_config(:max_reservation_days).to_i
       @messages = []
 
       if params[:tour]
+        @log_brief = "Generate schedules"
+        @log_text = "Tour: #{params[:tour]}\nSchedules: #{params[:ids]}"
+        @log_level = 3
         tour = Tour.find(params[:tour])
         params[:ids].split(',').each do |day|
           tour.gen_schedule(day.to_date)
         end
         render :text => params[:tour] + ' done '
-      else    
+      else
+        @log_brief = 'Prepare to Generate schedules.'
+        @log_text = ''
+        @log_level = 2
         Tour.where(:status => 1).each do |tour|
           gen_tour_schedule(tour, false)
         end
@@ -57,6 +63,25 @@ module Admin
         render 'admin/orders/selected'
       else
         render :text => @object ? "set_schedule(#{@object.id});" : "alert('not found');"
+      end
+    end
+
+    #override index
+    def index
+      return @collection if @collection
+      params[:search] ||= {:departure_date_greater_than_or_equal_to => Date.current()}
+      @search = Schedule.metasearch(params[:search])
+      @collection = @search.page(params[:page]).per_page(cfg.get_config(:admin_list_per_page))
+    end
+    #override create
+    def create
+      tour = Tour.find(params[:tour_id])
+      @object = tour.schedules.where(:departure_date => params[:departure_date]).first
+      if @object
+        flash[:error] = "Schedule #{@object.id} Already existed."
+      else
+        @object = tour.gen_schedule(Date.parse(params[:departure_date]))
+        flash[:notice] = "Add new Schedule #{@object.id}"
       end
     end
 

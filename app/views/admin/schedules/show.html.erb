@@ -1,5 +1,5 @@
 <%= content_for :head do %>
-  <%= javascript_include_tag 'admin/schedules/assignments' %>
+  <%= javascript_include_tag 'admin/seat_table' %>
 <% end %>
 <div id='schedule_title'>
   <%= render :partial => 'schedule_title', :locals => {:s => @object} %>
@@ -38,7 +38,6 @@
   <%= render 'orders', :orders => @object.orders %>
 </div>
 
-<div id='edit_div' class='dialog-normal'></div>
 <div id='select_schedule_div' class='dialog-popup'></div>
 <div id='select_customer_div' class='dialog-popup'></div>
 

@@ -28,7 +28,7 @@
     </tr>
   </thead>
 <% @collection.each do |c| %>
-  <%= render :partial => 'row', :locals => {:obj => c} %>
+  <%= render :partial => 'row', :object => c %>
 <% end %>
 </table>
 <%= will_paginate(@collection) %>

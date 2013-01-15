@@ -6,7 +6,8 @@
   <ul class="actions">
   	<li>
 			<%= form_for( @search, :url => admin_destinations_path ) do |f| %>
-  		<%= f.label :description_title_contains, "Title" %> <%= f.text_field :description_title_contains, :size => 15 %> &nbsp;
+  		<%= f.label :description_title_or_description_title_cn_contains, "Title" %> <%= f.text_field :description_title_or_description_title_cn_contains, :size => 15 %> &nbsp;
+
   		<%= button 'Search' %>
 			<% end %>
   	</li>
@@ -34,7 +35,7 @@
   </tr>
 </thead>
 <% @collection.each do |d| %>
-	<%= render :partial => 'row', :locals => {:obj => d} %>
+	<%= render :partial => 'row', :object => d %>
 <% end %>
 </table>
 <%= will_paginate(@collection) %>

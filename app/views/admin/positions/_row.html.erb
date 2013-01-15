@@ -1,10 +1,10 @@
-<tr id="<%= dom_id obj %>" <%= 'class=\'deleted\'' if !obj.status || obj.status < 1 %>>
-  <td><%= obj.id %></td>
-  <td><%= obj.title %></td>
-  <td><%= obj.status %></td>
-  <td><%= obj.created_at %></td>
+<tr id="<%= dom_id row %>" <%= 'class=\'deleted\'' if !row.status || row.status < 1 %>>
+  <td><%= row.id %></td>
+  <td><%= row.title %></td>
+  <td><%= row.status %></td>
+  <td><%= row.created_at %></td>
   <td class="actions">
-    <%= link_to_edit obj %> |
-    <%= link_to_hide obj, 'data-confirm' => 'Are you sure to hide/show this Position?' %>
+    <%= link_to_edit row %> |
+    <%= link_to_hide row, 'data-confirm' => 'Are you sure to hide/show this Position?' %>
   </td>
 </tr>

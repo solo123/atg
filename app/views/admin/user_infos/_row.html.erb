@@ -1,12 +1,13 @@
-  <tr id="<%= dom_id obj %>">
-      <td><%= obj.id %></td>
-      <td><%= obj.full_name %></td>
-      <td><%= obj.user_type %></td>
-      <td><%= obj.status %></td>
-      <td><%= obj.created_at %></td>
-      <td><%= obj.updated_at %></td>
+  <tr id="<%= dom_id row %>">
+      <td><%= row.id %></td>
+      <td><%= row.full_name %></td>
+      <td><%= row.user_type %></td>
+      <td><%= row.status %></td>
+      <td><%= row.created_at %></td>
+      <td><%= row.updated_at %></td>
     <td class="actions">
-      <%= link_to 'Edit', edit_admin_user_info_path(obj), :remote => true %> |
-      <%= link_to 'Hide', admin_user_info_path(obj), :remote => true, 'data-method' => 'delete', 'data-confirm' => 'Are you sure to hide/show this User?' %>
+      <%= link_to 'Edit', edit_admin_user_info_path(row), :remote => true %> |
+      <%= link_to 'Photos', admin_user_info_photos_path(row), {:target => 'edit-win'} %> |
+      <%= link_to 'Hide', admin_user_info_path(row), :remote => true, 'data-method' => 'delete', 'data-confirm' => 'Are you sure to hide/show this User?' %>
     </td>
   </tr>

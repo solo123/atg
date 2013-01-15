@@ -1,7 +1,7 @@
 module Admin
   class OrdersController < ResourceController
     new_action.after :new_params
-    create.after :save_seats
+    create.after :set_seats
 
     private
     def new_params
@@ -12,7 +12,6 @@ module Admin
       end
 
       if params[:seats]
-        @object.seats = params[:seats]
         rn = params[:seats].split(',').count
         while rn > 0 do
           item = @object.order_items.build
@@ -21,8 +20,10 @@ module Admin
         end
       end
     end
-    def save_seats
-      @object.save_seats
+    def set_seats
+      unless params[:seats].blank?
+        @object.set_seats(params[:seats])
+      end
     end
   end
 end

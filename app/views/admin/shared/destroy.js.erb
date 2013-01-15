@@ -1,3 +1,0 @@
-$("#<%= dom_id(@object) %>")
-	.replaceWith("<%= escape_javascript(render(:partial => 'row', :locals => {:obj => @object})) %>");
-$("#edit_div").dialog('close');

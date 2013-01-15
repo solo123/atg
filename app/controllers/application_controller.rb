@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
   # e.g. <% title = 'This is a custom title for this view' %>
   attr_writer :title
 
+  def cfg
+    AppConfig.instance
+  end
   def title
-  	@title ||= AppConfig[:site_name]
+  	@title ||= cfg.get_config(:site_name)
   end
 
 	def set_locale
@@ -36,7 +39,7 @@ class ApplicationController < ActionController::Base
       log.log_brief = 'view ' + log.controller + '#' + log.action 
       log.level = 2
       log.save
-      '/admin'
+      cfg.get_config(:admin_path)
     else
       super
     end
@@ -48,4 +51,5 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+  
 end
