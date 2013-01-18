@@ -10,7 +10,7 @@ class EmployeeInfo < ActiveRecord::Base
 
   accepts_nested_attributes_for :telephones, :allow_destroy => true, :reject_if => proc {|att| att['tel'].blank? }
   accepts_nested_attributes_for :emails, :allow_destroy => true, :reject_if => proc { |att| att['email_address'].blank? }
-  accepts_nested_attributes_for :addresses, :allow_destroy => true, :reject_if => proc {|att| att['address1'].blank? || att['city_id'] <= 0 }
+  accepts_nested_attributes_for :addresses, :allow_destroy => true, :reject_if => proc {|att| att['address1'].blank? }
 
   def self.in_role(role)
     self.where(:status => 1).where('roles like ?', "%#{role}%")

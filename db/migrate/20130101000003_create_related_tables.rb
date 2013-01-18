@@ -69,12 +69,14 @@ class CreateRelatedTables < ActiveRecord::Migration
       t.integer :tel_number_id
       t.string :tel_type
       t.string :tel
+      t.integer :priority, :default => 0
       t.timestamps
     end
     create_table :emails do |t|
       t.string :email_data_type
       t.integer :email_data_id
       t.string :email_address
+      t.integer :priority, :default => 0
       t.timestamps
     end
     create_table :addresses do |t|
@@ -85,6 +87,7 @@ class CreateRelatedTables < ActiveRecord::Migration
       t.string :zipcode
       t.integer :city_id
       t.integer :usage_type
+      t.integer :priority, :default => 0
       t.timestamps
     end
     create_table :cities do |t|

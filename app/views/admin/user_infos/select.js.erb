@@ -27,4 +27,7 @@ function user_info_after_updated(user_info_id){
   $('#order_order_detail_attributes_user_info_id').val(user_info_id);
   refresh_customer();
 }
+function user_info_after_created(user_info_id){
+  user_info_after_updated(user_info_id);
+}
 

@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(:version => 20130109000001) do
     t.string   "zipcode"
     t.integer  "city_id"
     t.integer  "usage_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.integer  "priority",          :default => 0
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "ads", :force => true do |t|
@@ -167,8 +168,9 @@ ActiveRecord::Schema.define(:version => 20130109000001) do
     t.string   "email_data_type"
     t.integer  "email_data_id"
     t.string   "email_address"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "priority",        :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "employee_infos", :force => true do |t|
@@ -331,13 +333,13 @@ ActiveRecord::Schema.define(:version => 20130109000001) do
   create_table "pay_checks", :force => true do |t|
     t.integer  "payment_id"
     t.string   "check_number"
-    t.decimal  "amount",         :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "casher_id"
+    t.decimal  "amount",           :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "employee_info_id"
     t.datetime "finished_at"
     t.integer  "finished_by_id"
-    t.integer  "status",                                       :default => 0
-    t.datetime "created_at",                                                    :null => false
-    t.datetime "updated_at",                                                    :null => false
+    t.integer  "status",                                         :default => 0
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   create_table "pay_companies", :force => true do |t|
@@ -352,6 +354,7 @@ ActiveRecord::Schema.define(:version => 20130109000001) do
     t.integer  "confirm_at"
     t.integer  "finished_at"
     t.integer  "finished_by_id"
+    t.integer  "employee_info_id"
     t.integer  "status",                                             :default => 0
     t.datetime "created_at",                                                          :null => false
     t.datetime "updated_at",                                                          :null => false
@@ -366,27 +369,27 @@ ActiveRecord::Schema.define(:version => 20130109000001) do
     t.string   "csc"
     t.integer  "address_id"
     t.string   "prof_code"
-    t.decimal  "amount",         :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "service_fee",    :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "total_amount",   :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "casher_id"
+    t.decimal  "amount",           :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "service_fee",      :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "total_amount",     :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "employee_info_id"
     t.integer  "finished_by_id"
     t.datetime "finished_at"
     t.integer  "user_id"
-    t.integer  "is_web",                                       :default => 0
-    t.integer  "status",                                       :default => 0
-    t.datetime "created_at",                                                    :null => false
-    t.datetime "updated_at",                                                    :null => false
+    t.integer  "is_web",                                         :default => 0
+    t.integer  "status",                                         :default => 0
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   create_table "pay_vouchers", :force => true do |t|
     t.integer  "payment_id"
     t.integer  "voucher_id"
-    t.decimal  "amount",     :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "casher_id"
-    t.integer  "status",                                   :default => 0
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
+    t.decimal  "amount",           :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "employee_info_id"
+    t.integer  "status",                                         :default => 0
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   create_table "payments", :force => true do |t|
@@ -503,8 +506,9 @@ ActiveRecord::Schema.define(:version => 20130109000001) do
     t.integer  "tel_number_id"
     t.string   "tel_type"
     t.string   "tel"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "priority",        :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "todo_workers", :force => true do |t|

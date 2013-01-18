@@ -1,7 +1,10 @@
 <%= form_for( [:admin, @object], :remote => true) do |f| %>
   <div class='container'>
     <div class='span-8'>
-      <%= render :partial => '/admin/shared/select_employee', :locals => {:f => f, :field_name => 'owner_id'} %>
+      <%= f.field_container :owner_id do %>
+        <%= f.label :owner_id %><br />
+        <%= f.select(:owner_id, EmployeeInfo.where(:status => 1).where(:company_id => 1).collect{|e| [e.nickname, e.id]}, {:include_blank => true }, :onchange => 'set_account_name(this);') %>  	
+      <% end %>
       <%= f.hidden_field 'owner_type', :value => 'EmployeeInfo' %>
     </div>
   <div class="container">

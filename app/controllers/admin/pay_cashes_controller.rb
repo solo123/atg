@@ -15,6 +15,7 @@ module Admin
         p.operator_id = current_employee.employee_info.id
         if p.save
           if @object.save
+            @object.payment = p
             order.order_price.balance_amount = p.current_balance
             if order.order_price.balance_amount <= 0
               order.status = 3
@@ -25,9 +26,11 @@ module Admin
             end
             order.save
           else
+            @no_log = 1
             flash[:error] = @object.errors.full_messages.to_sentence
           end
         else
+          @no_log = 1
           flash[:error] = p.errors.full_messages.to_sentence
         end
       end

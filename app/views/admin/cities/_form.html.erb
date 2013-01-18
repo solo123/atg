@@ -2,67 +2,24 @@
 		Search city:<br />
 		<%= text_field_tag :city_select, '' %>
 		<%= hidden_field_tag :city_id %>
-    <%= button_link_to 'Select', select_admin_cities_path + 'id=0', {:icon => 'add', :remote => true} %> <br />
+    <%= button_link_to 'Select', select_admin_city_path(@object.new_record? ? 0 : @object), {:icon => 'add', :remote => true, :id => 'select_city_button'} %> <br />
 	</div>
 <%= form_for( [:admin, @object], :remote => true) do |f| %>
-  <%= hidden_field_tag :edit_div, params[:edit_div] %>
-  <%= hidden_field_tag :short, params[:short] %>
-  <b>User ID: <%= @object.id %></b>
   <div class="container">
-        <% if params[:agent_id] %>
-        <%= f.hidden_field :user_data_type, :value => 'Agent' %>
-        <%= f.hidden_field :user_data_id, :value => params[:agent_id] %>
-        <% end %>
   	<div class='span-7'>
-	  <%= f.field_container :full_name do %>
-	  	<%= f.label :full_name %><br />
-	  	<%= f.text_field :full_name %>
+	  <%= f.field_container :city do %>
+	  	<%= f.label :city %><br />
+	  	<%= f.text_field :city %>
 	  <% end %>
-	  <%= f.field_container :user_type do %>
-	  	<%= f.label :user_type %><br />
-	  	<%= f.text_field :user_type %>
+	  <%= f.field_container :state do %>
+	  	<%= f.label :state %><br />
+	  	<%= f.text_field :state %>
 	  <% end %>
-	  <%= f.field_container :status do %>
-	  	<%= f.label :status %><br />
-	  	<%= f.text_field :status %>
+	  <%= f.field_container :country do %>
+	  	<%= f.label :country %><br />
+	  	<%= f.text_field :country %>
 	  <% end %>
 	  </div>
-	  <div class='span-9 last'>
-	  	<% if @object.user %>
-	  	<p>email(login): <%= @object.user.email %></p>
-	  	<p>sign_in_count: <%= @object.user.sign_in_count %></p>
-	  	<p>last_sign_in: <%= @object.user.last_sign_in_at %></p>
-	  	<p>created at: <%= @object.user.created_at %></p>
-	  	<% end %>
-
-	  	Telephones:
-      <%= add_object_js_link 'Add', f, :telephones, 'form_tel', '#tels'  %>
-      <br /> 
-      <div id='tels'>
-        <%= f.fields_for :telephones do |tel_form| %>
-        	<%= render :partial => 'form_tel', :locals => { :f => tel_form} %>
-        <% end %>
-      </div><hr />
-	  	Emails:
-      <%= add_object_js_link 'Add', f, :emails, 'form_email', '#emails'  %>
-      <br /> 
-      <div id='emails'>
-        <%= f.fields_for :emails do |email_form| %>
-        	<%= render :partial => 'form_email', :locals => { :f => email_form} %>
-        <% end %>
-      </div>
-      <hr />
-	  	
-	  	Addresses:
-      <%= add_object_js_link 'Add', f, :addresses, 'form_address', '#addresses'  %>
-      <br /> 
-      <div id='addresses'>
-        <%= f.fields_for :addresses do |adr_form| %>
-        	<%= render :partial => 'form_address', :locals => { :f => adr_form} %>
-        <% end %>
-      </div>
-
-	 	</div>
 	</div>
 
   <div class="actions">

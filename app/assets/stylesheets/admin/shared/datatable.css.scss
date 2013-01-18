@@ -53,6 +53,7 @@ table.border-table{
   padding:2px;
   border-collapse:collapse;
   td{border:solid 1px $bd2;}
+  th{background-color: $bg2;border:solid 1px $bd2;text-align:center;} 
 }
 td.align-right {text-align:right;}
 td.align-center {text-align:center;}

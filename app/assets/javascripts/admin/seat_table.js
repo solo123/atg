@@ -144,6 +144,7 @@ function refresh_customer(){
       $('#order_order_detail_attributes_telephone').val(data.telephone);
       $('#order_order_detail_attributes_email').val(data.email);
       $('#order_order_detail_attributes_bill_address').val(data.address);
+      test = data;
     });
   } else {
     $('#order_order_detail_attributes_full_name').val("");

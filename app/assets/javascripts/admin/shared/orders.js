@@ -9,3 +9,7 @@ function rm_if_new_record(check_tag){
     });
   }
 }
+
+function set_account_name(select_tag){
+  $('#account_account_name').val($(select_tag).find('option:selected').text());
+}

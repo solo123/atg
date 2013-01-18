@@ -3,55 +3,51 @@
     <fieldset>
       <legend>Customer</legend>
       <% if @object.order_detail && @object.order_detail.user_info %>
-      <table class='compact' style='width:auto;'>
-        <tr>
-          <td>Full name:</td>
-          <td><%= @object.order_detail.user_info.full_name %></td>
-        </tr>
-        <tr>
-          <td>Telephone:</td>
-          <td><%= @object.order_detail.user_info.telephones.first %></td>
-        </tr>
-        <tr>
-          <td>Email:</td>
-          <td><%= @object.order_detail.user_info.emails.first %></td>
-        </tr>
-        <tr>
-          <td>Address:</td>
-          <td><%= @object.order_detail.user_info.addresses.first %></td>
-        </tr>
-      </table>
+        <table class='compact' style='width:auto;'>
+          <tr>
+            <td class='note-text'>Full name:</td>
+            <td><%= @object.order_detail.user_info.full_name %></td>
+          </tr>
+          <tr>
+            <td class='note-text'>Telephone:</td>
+            <td>
+              <% @object.order_detail.user_info.telephones.each do |tel| %>
+                <%= tel %>,
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class='note-text'>Email:</td>
+            <td><%= @object.order_detail.user_info.emails.first %></td>
+          </tr>
+          <tr>
+            <td class='note-text'>Address:</td>
+            <td><%= @object.order_detail.user_info.addresses.first %></td>
+          </tr>
+        </table>
       <% end %>
     </fieldset>
     <fieldset>
       <legend>Payment</legend>
-      <table class='border-table'>
+      <table class='border-table' id='list_payments'>
         <thead>
           <tr>
-            <td>Method</td>
-            <td>before</td>
-            <td>Amount</td> 
-            <td>after</td> 
-            <td>operator</td>
-            <td>Date</td>
-            <td>Op</td>
+            <th>Method</th>
+            <th>before</th>
+            <th>Amount</th> 
+            <th>after</th> 
+            <th>operator</th>
+            <th>Date</th>
+            <th>Op</th>
           </tr>
         </thead>
         <tbody>
           <% @object.payments.each do |p| %>
-          <tr>
-            <td><%= p.pay_method_type %></td>
-            <td><%= p.balance_before %></td>
-            <td><%= p.amount %></td>
-            <td><%= p.current_balance %></td>
-            <td><%= p.operator_id %></td>
-            <td><%= p.updated_at %></td>
-            <td>view</td>
-          </tr>
+            <%= render :partial => '/admin/payments/row', :object => p %>
           <% end %>
         </tbody>
       </table>
-      <p style='text-align:right;'>Current balance: <%= @object.order_price.balance_amount %></p>
+      <p style='text-align:right;'><span class='note-text'>Current balance:</span> <span class='strong'><%= @object.order_price.balance_amount %></span></p>
       <p>
         <%= button_link_to 'Payment', new_admin_payment_path(:order_id => @object.id), {:remote => true, :icon => 'add' }%>
       </p>
@@ -60,12 +56,7 @@
   <div class='span-12 last'>
     <fieldset>
       <legend>Order</legend>
-      <table class='compact' style='width:auto;'>
-        <tr>
-          <td>Order ID:</td>
-          <td><div class='barcode'><%= @object.order_number %></div></td>
-        </tr>
-      </table>
+      <div class='barcode' style='float:right;'><%= @object.order_number %></div>
       <% if @object.schedule %>
         <p style='font-size:110%;font-weight:bold;'>
           <%= @object.schedule.tour.description.title %><br />
@@ -81,48 +72,69 @@
 
     <fieldset>
       <legend>Detail</legend>
-    <table class='border-table'>
-      <thead>
-        <tr>
-          <th>Room</th>
-          <th>Adult</th>
-          <th>Child</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-    <% @object.order_items.each_with_index do |item, i| %>
-      <tr>
-        <td><%= i %></td>
-        <td><%= item.num_adult %></td>
-        <td><%= item.num_child %></td>
-        <td class='align-right'><%= item.amount %></td>
-      </tr>
-    <% end %>
-    <% if @object.order_price %>
-      <tr>
-        <td class='align-right'>Total:</td>
-        <td colspan='2' class='align-right'><%= @object.order_price.num_total %> person</td>
-        <td class='align-right'><%= @object.order_price.total_amount %></td>
-      </tr>
-      <tr>
-        <td colspan='3' class='align-right'>Adjustment amount:</td>
-        <td class='align-right'><%= @object.order_price.adjustment_amount %></td>
-      </tr>
-      <tr>
-        <td colspan='3' class='align-right'>Actual Amount:</td>
-        <td class='align-right'><%= @object.order_price.actual_amount %></td>
-      </tr>
-    <% end %> 
-      </tbody>
-    </table>
-      <p>Order method: <%= @object.order_method %></p>
-      <p>Created at: <%= @object.created_at %></p>
-      <p>Updated at: <%= @object.updated_at %></p>
-      <p>Completed at: <%= @object.completed_at %></p>
-      <p>Status: <%= @object.status %></p>
+      <table class='border-table'>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Adult</th>
+            <th>Child</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @object.order_items.each_with_index do |item, i| %>
+            <tr>
+              <td><%= i %></td>
+              <td><%= item.num_adult %></td>
+              <td><%= item.num_child %></td>
+              <td class='align-right'><%= item.amount %></td>
+            </tr>
+          <% end %>
+          <% if @object.order_price %>
+            <tr>
+              <td class='align-right'>Total:</td>
+              <td colspan='2' class='align-right'><%= @object.order_price.num_total %> person</td>
+              <td class='align-right'><%= @object.order_price.total_amount %></td>
+            </tr>
+            <tr>
+              <td colspan='3' class='align-right'>Adjustment amount:</td>
+              <td class='align-right'><%= @object.order_price.adjustment_amount %></td>
+            </tr>
+            <tr>
+              <td colspan='3' class='align-right'>Actual Amount:</td>
+              <td class='align-right'><%= @object.order_price.actual_amount %></td>
+            </tr>
+          <% end %> 
+        </tbody>
+      </table>
+      <div class='container'>
+        <div class='span-3 note-text'>Order method: </div>
+        <div class='span-5 last'><%= @object.order_method %></div>
+      </div>
+      <div class='container'>
+        <div class='span-3 note-text'>Created at: </div>
+        <div class='span-5 last'><%= time_tag @object.created_at %></div>
+      </div>
+      <div class='container'>
+        <div class='span-3 note-text'>Updated at: </div>
+        <div class='span-5 last'><%= time_tag @object.updated_at if @object.updated_at %></div>
+      </div>
+      <div class='container'>
+        <div class='span-3 note-text'>Completed at: </div>
+        <div class='span-5 last'><%= time_tag @object.completed_at if @object.completed_at %></div>
+      </div>
+      <div class='container'>
+        <div class='span-3 note-text'>Status: </div>
+        <div class='span-5 last'><%= @object.status %></div>
+      </div>
     </fieldset>
   </div>
 </div>
+<%= link_to 'Add remark', new_admin_order_remark_path(@object), :remote => true %>
+<div id='list_remarks' class='notes'>
+<% @object.remarks.each do |rmk| %>
+  <%= render :partial => '/admin/remarks/row', :object => rmk %>
+<% end %>
 
+</div>
 

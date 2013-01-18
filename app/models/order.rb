@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :payments, :as => :payment_data
   has_many :bus_seats
+  has_many :remarks, :as => :note_data, :dependent => :destroy
 
   accepts_nested_attributes_for :order_detail, :allow_destroy => true
   accepts_nested_attributes_for :order_price, :allow_destroy => true

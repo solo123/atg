@@ -53,6 +53,15 @@ module Admin
       @parent = @schedule = Schedule.find(params[:schedule_id])
       @object = @schedule.assignments.build
     end
+    def create
+      @parent = @schedule = Schedule.find(params[:schedule_id])
+      @object = @schedule.assignments.build(params[:schedule_assignment])
+      if @object.save
+      else
+        flash[:error] = @object.errors.full_messages.to_sentence
+        @no_log = 1
+      end
+    end
     protected
       def load_object
         @parent = @schedule = Schedule.find(params[:schedule_id])

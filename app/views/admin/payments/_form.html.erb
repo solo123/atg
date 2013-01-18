@@ -18,47 +18,10 @@
   <div class='panes'>
     <div id='tab-cash' tag='cash'>
       <%= render 'form_pay_cash' %>
-	</div>
-	<div id='tab-cc' tag='credit_card' >
-		<table style="width:auto;">
-			<tr>
-				<td>Full name:</td>
-				<td><%= text_field_tag 'credit_card[full_name]' %></td>
-			</tr>
-			<tr>
-				<td>Card type:</td>
-				<td><%= select('credit_card','card_type', %w[Visa Master AE]) %></td>
-			</tr>
-			<tr>
-				<td>Card Number:</td>
-				<td><%= text_field_tag 'credit_card[card_number]' %></td>
-			</tr>
-			<tr>
-				<td>Valid date:</td>
-				<td><%= text_field_tag 'credit_card[valid_date]' %></td>
-			</tr>
-			<tr>
-				<td>CSC:</td>
-				<td><%= text_field_tag 'credit_card[csc]' %></td>
-			</tr>
-			<tr>
-				<td>Amount:</td>
-				<td><%= text_field_tag 'credit_card[amount]' %></td>
-			</tr>
-			<tr>
-				<td>Prof code:</td>
-				<td><%= text_field_tag 'credit_card[prof_code]' %></td>
-			</tr>
-			<tr>
-				<td>Service fee:</td>
-				<td><%= text_field_tag 'credit_card[service_fee]' %></td>
-			</tr>
-			<tr>
-				<td>Total amount:</td>
-				<td><%= text_field_tag 'credit_card[total_amount]' %></td>
-			</tr>
-		</table>
-	</div>
+	  </div>
+	  <div id='tab-cc' tag='credit_card' >
+      <%= render 'form_pay_credit_card' %>
+	  </div>
 	<div id='tab-check' tag='check' style='height:100px;'>
 		<table style="width:auto;">
 			<tr>
@@ -99,8 +62,4 @@
   </div>
 </div>
 </div>
-<br />
-<p>
-	Remark: <%= text_area_tag :remark, :style => 'height:50px;' %>
-</p>
 

@@ -10,8 +10,8 @@ $(edit_div)
 	.dialog('option', 'title', '* New Schedule Assignment *')
 	.dialog('open');
 
-var driver_list = <%=raw @schedule.valid_employee('2').collect{|e| [e.nickname, e.id]} %>;
-var tourguide_list = <%=raw @schedule.valid_employee('3').collect{|e| [e.nickname, e.id]} %>;
+var driver_list = <%=raw @object.valid_employee('2').collect{|e| [e.nickname, e.id]} %>;
+var tourguide_list = <%=raw @object.valid_employee('3').collect{|e| [e.nickname, e.id]} %>;
 
 bind_driver_selection();
 bind_tourguide_selection();

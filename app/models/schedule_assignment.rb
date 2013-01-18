@@ -18,10 +18,10 @@ class ScheduleAssignment < ActiveRecord::Base
   validate :check_tour_guide
 
   def check_driver
-    errors.add(:driver_assistance_id, 'cannot same as driver') if driver_id == driver_assistance_id
+    errors.add(:driver_assistance_id, 'cannot same as driver') if driver_id && driver_id == driver_assistance_id
   end
   def check_tour_guide
-    errors.add(:tour_guide_assistance_id, 'cannot same as tour guide') if tour_guide_id == tour_guide_assistance_id
+    errors.add(:tour_guide_assistance_id, 'cannot same as tour guide') if tour_guide_id && tour_guide_id == tour_guide_assistance_id
   end
 
   def total_seats

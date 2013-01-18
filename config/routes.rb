@@ -61,6 +61,7 @@ Omei::Application.routes.draw do
     resources :emails, :telephones, :addresses
     resources :orders do
       get :add_room, :on => :collection
+      resources :remarks
     end
     resources :employees
     resources :employee_infos do
@@ -99,7 +100,11 @@ Omei::Application.routes.draw do
       end
     end
     resources :remarks
-    resources :cities
+    resources :cities do
+      get :select, :on => :member
+      get :get_detail, :on => :member
+      get :search, :on => :collection
+    end
   end
 
   match '/aeadmin', :to => 'admin/home#index', :as => :aeadmin

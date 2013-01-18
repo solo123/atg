@@ -47,15 +47,15 @@
           <%= render 'form_room', :f => item %>
         <% end %>
       </div>
-      <p><%= link_to "Add room", 'javascript:add_room();' %> |
-        <%= add_object_js_link 'Add', f, :order_items, 'form_room', '#rooms'  %>
+      <p>
+        <%= add_object_js_link 'Add room', f, :order_items, 'form_room', '#rooms'  %>
       </p>
     </fieldset>
     </div>
   <div class="actions">
     <%= f.submit %>
     &nbsp;
-    <%= link_to 'Payment', new_admin_payment_path(:order_id => @object.id) if @object.id %>
+    <%= link_to 'Payment', admin_order_path(@object.id) if @object.id %>
   </div>  
 <script type='text/javascript'>
   var tmp = "<%= generate_template f, :order_items, :partial => 'form_room'  %>";

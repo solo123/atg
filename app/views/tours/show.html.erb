@@ -54,14 +54,14 @@ $(function(){
 <% end %>
 <% end %>
 <div class='crumb'>
-<a href='/'>Home</a> > <a href='/tours'>Tours</a> > <a href='/tours/<%= @tour.tour_type_menu_id %>'><%= @tour.tour_type_name %></a> > <%= @tour.title %>
+<a href='/'>Home</a> > <a href='/tours'>Tours</a> > <a href='/tours/<%= @tour.tour_type_menu_id %>'><%= @tour.tour_type_name %></a> > <%= @tour.description.title %>
 </div>
 
 <div class="main_lightGreen" style="padding:20px;">
 
     <div id="tour_detail">
         <div class="head">
-            <h2><%=h @tour.title %></h2>
+            <h2><%=h @tour.description.title %></h2>
         </div>
         <%=h @tour.description.en if @tour.description %>
     </div>
@@ -97,10 +97,10 @@ $(function(){
 
         <div class='dest'>
           <div class="pic">
-          	<%= image_tag spot.destination.photo.photo_m if spot.destination.photo %>
+          	<%= image_tag spot.destination.title_photo.pic(:thumb) if spot.destination.title_photo %>
           </div>
           <div class="info">
-              <%= link_to spot.destination.title, destination_path(spot.destination) %>
+              <%= link_to spot.destination.description.title, destination_path(spot.destination) %>
               <%=h spot.description.en if spot.description %>
           </div>
           <div class="clear"></div>

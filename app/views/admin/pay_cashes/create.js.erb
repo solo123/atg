@@ -1,6 +1,10 @@
 <% if flash[:error] %>
   alert("<%= flash[:error] %>");
 <% else %>
+  
+  $("#list_payments")
+    .append("<%= escape_javascript(render(:partial => '/admin/payments/row', :object => @object.payment)) %>");
   $('#edit_payment_div').dialog('close');
+
 <% end %>
 

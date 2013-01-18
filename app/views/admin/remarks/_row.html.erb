@@ -1,13 +1,7 @@
-<tr id="<%= dom_id row %>" <%= 'class=\'deleted\'' if !row.status || row.status < 1 %>>
-  <td><%= row.id %></td>
-  <td><%= row.note_data_type %></td>
-  <td><%= row.note_data_id %></td>
-  <td><%= row.note_text %></td>
-  <td><%= row.employee_info_id %></td>
-  <td><%= row.status %></td>
-  <td><%= formatted_shot_datetime(row.created_at) %></td>
-  <td class="actions">
-    <%= link_to_edit row %> |
-    <%= link_to_hide row, 'data-confirm' => 'Are you sure to hide/show this Position?' %>
-  </td>
-</tr>
+  <div class='a-note'><div class='content'>
+    <p class='note-text small-font'><%= row.employee_info.nickname %>
+      <%= time_tag row.created_at %>
+  </p>
+  <p><%= row.note_text %></p>
+</div></div>
+
