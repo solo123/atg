@@ -1,0 +1,25 @@
+<% 
+  pay_check = PayCheck.new
+%>
+<%= form_for( [:admin, pay_check], :remote => true) do |f| %>
+  <%= hidden_field_tag :order_id, params[:order_id] %>
+		<table class='compact'>
+			<tr>
+				<td>Amount:</td>
+				<td><%= f.text_field :amount %></td>
+			</tr>
+			<tr>
+				<td>Check number:</td>
+				<td><%= f.text_field :check_number %></td>
+			</tr>
+    <tr>
+      <td>Cash received by:</td>
+      <td><%= f.select('account_id', Account.where(:status => 1).where(:owner_type => 'EmployeeInfo').collect{|d| [d.account_name, d.id]}, {:include_blank => true }) %>  	
+      </td>
+    </tr>
+  </table>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

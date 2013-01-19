@@ -27,30 +27,8 @@
         </table>
       <% end %>
     </fieldset>
-    <fieldset>
-      <legend>Payment</legend>
-      <table class='border-table' id='list_payments'>
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>before</th>
-            <th>Amount</th> 
-            <th>after</th> 
-            <th>operator</th>
-            <th>Date</th>
-            <th>Op</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @object.payments.each do |p| %>
-            <%= render :partial => '/admin/payments/row', :object => p %>
-          <% end %>
-        </tbody>
-      </table>
-      <p style='text-align:right;'><span class='note-text'>Current balance:</span> <span class='strong'><%= @object.order_price.balance_amount %></span></p>
-      <p>
-        <%= button_link_to 'Payment', new_admin_payment_path(:order_id => @object.id), {:remote => true, :icon => 'add' }%>
-      </p>
+    <fieldset id='list_payments'>
+      <%= render :partial => 'admin/payments/payments', :object => @object  %>
     </fieldset>
   </div>
   <div class='span-12 last'>

@@ -1,6 +1,5 @@
 <% 
   pay_cash = PayCash.new
-  pay_cash.account_id = current_employee.employee_info.account.id if current_employee.employee_info.account
 %>
 <%= form_for( [:admin, pay_cash], :remote => true) do |f| %>
   <%= hidden_field_tag :order_id, params[:order_id] %>
@@ -15,7 +14,7 @@
     </tr>
     <tr>
       <td>Cash received by:</td>
-      <td><%= f.select('account_id', Account.where(:status => 1).where(:owner_type => 'EmployeeInfo').collect{|d| [d.account_name, d.id]}, {:include_blank => true }) %>  	
+      <td><%= f.select(:account_id, Account.where(:status => 1).where(:owner_type => 'EmployeeInfo').collect{|d| [d.account_name, d.id]}, {:include_blank => true }) %>  	
       </td>
       <td></td>
     </tr>

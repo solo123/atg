@@ -33,10 +33,10 @@ class CreatePayments < ActiveRecord::Migration
       t.decimal :amount, :precision => 8, :scale => 2, :default => 0
       t.decimal :service_fee, :precision => 8, :scale => 2, :default => 0
       t.decimal :total_amount, :precision => 8, :scale => 2, :default => 0
-      t.integer :employee_info_id
+      t.integer :account_id
       t.integer :finished_by_id
       t.datetime :finished_at
-      t.integer :user_id
+      t.integer :user_info_id
       t.integer :is_web, :default => 0
       t.integer :status, :default => 0
       t.timestamps
@@ -45,7 +45,8 @@ class CreatePayments < ActiveRecord::Migration
       t.integer :payment_id
       t.string :check_number
       t.decimal :amount, :precision => 8, :scale => 2, :default => 0
-      t.integer :employee_info_id
+      t.integer :account_id
+      t.integer :user_info_id
       t.datetime :finished_at
       t.integer :finished_by_id
       t.integer :status, :default => 0
@@ -55,7 +56,7 @@ class CreatePayments < ActiveRecord::Migration
       t.integer :payment_id
       t.integer :voucher_id
       t.decimal :amount, :precision => 8, :scale => 2, :default => 0
-      t.integer :employee_info_id
+      t.integer :account_id
       t.integer :status, :default => 0
       t.timestamps
     end
@@ -71,7 +72,7 @@ class CreatePayments < ActiveRecord::Migration
       t.integer :confirm_at
       t.integer :finished_at
       t.integer :finished_by_id
-      t.integer :employee_info_id
+      t.integer :account_id
       t.integer :status, :default => 0
       t.timestamps
     end      

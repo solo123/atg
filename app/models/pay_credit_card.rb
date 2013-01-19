@@ -1,6 +1,6 @@
-class PayCash < ActiveRecord::Base
+class PayCreditCard < ActiveRecord::Base
   belongs_to :payment
-  belongs_to :casher, :class_name => 'Employee'
-  belongs_to :user
+  belongs_to :account
+  belongs_to :user_info
 end
 

@@ -1,9 +1,0 @@
-  <tr id='<%= dom_id(row) %>'>
-              <td><%= row.pay_method_type %></td>
-              <td><%= row.balance_before %></td>
-              <td><%= row.amount %></td>
-              <td><%= row.current_balance %></td>
-              <td><%= row.operator.nickname if row.operator %></td>
-              <td><%= time_tag row.updated_at if row.updated_at %></td>
-              <td>view</td>
-            </tr>

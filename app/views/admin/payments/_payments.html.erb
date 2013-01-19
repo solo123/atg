@@ -1,0 +1,32 @@
+      <legend>Payment</legend>
+      <table class='border-table'>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>before</th>
+            <th>Amount</th> 
+            <th>after</th> 
+            <th>operator</th>
+            <th>Date</th>
+            <th>Op</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% payments.payments.each do |p| %>
+            <tr id='<%= dom_id(p) %>'>
+              <td><%= p.pay_method_type %></td>
+              <td><%= p.balance_before %></td>
+              <td><%= p.amount %></td>
+              <td><%= p.current_balance %></td>
+              <td><%= p.operator.nickname if p.operator %></td>
+              <td><%= time_tag p.updated_at if p.updated_at %></td>
+              <td>view</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p style='text-align:right;'><span class='note-text'>Current balance:</span> <span class='strong'><%= payments.order_price.balance_amount %></span></p>
+      <p>
+        <%= button_link_to 'Payment', new_admin_payment_path(:order_id => payments.id), {:remote => true, :icon => 'add' }%>
+      </p>
+

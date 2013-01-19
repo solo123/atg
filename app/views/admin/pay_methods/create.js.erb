@@ -1,0 +1,12 @@
+<% if flash[:error] %>
+  alert("<%= flash[:error] %>");
+<% else %>
+  
+  $("#list_payments")
+    .html("<%= j render(:partial => '/admin/payments/payments', :object => @object.payment.payment_data) %>");
+  $('#edit_payment_div').dialog('close');
+
+<% end %>
+
+
+

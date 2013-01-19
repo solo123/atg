@@ -23,42 +23,13 @@
       <%= render 'form_pay_credit_card' %>
 	  </div>
 	<div id='tab-check' tag='check' style='height:100px;'>
-		<table style="width:auto;">
-			<tr>
-				<td>Amount:</td>
-				<td><%= text_field_tag 'check[amount]' %></td>
-			</tr>
-			<tr>
-				<td>Check number:</td>
-				<td><%= text_field_tag 'check[check_number]' %></td>
-			</tr>
-		</table>
+    <%= render 'form_pay_check' %>
 	</div>
 	<div id='tab-voucher' tag='voucher' style='height:100px;'>
-		<table style="width:auto;">
-			<tr>
-				<td>Voucher#</td>
-				<td><%= text_field_tag 'voucher[voucher_number]'%></td>
-			</tr>
-			<tr>
-				<td>Amount:</td>
-				<td><%= text_field_tag 'voucher[amount]'%></td>
-			</tr>
-		</table>
+    <%= render 'form_pay_voucher' %>
 	</div>
 	<div id='tab-ap' tag='company_receivable' style='height:100px;'>
-		<p>
-			Company:
-		</p>
-		<p>
-			Company commission: <%= text_field_tag 'company_receivable[commission]' %>
-		</p>
-		<p>
-			Amount: <%= text_field_tag 'company_receivable[amount]' %>
-		</p>
-		<p>
-			Company order# <%= text_field_tag 'company-receivable[related_order_number]' %>
-		</p>
+    <%= render 'form_pay_company' %>
   </div>
 </div>
 </div>
