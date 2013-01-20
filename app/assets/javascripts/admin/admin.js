@@ -7,7 +7,6 @@
 //= require jquery/jquery-barcode-2.0.2.min
 //= require superfish/hoverIntent
 //= require superfish/superfish
-//= require xheditor/xheditor-1.1.11-zh-cn.min
 //= require ./init
 //= require_tree ./shared
 
