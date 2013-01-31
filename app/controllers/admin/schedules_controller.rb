@@ -32,7 +32,7 @@ module Admin
     end
     
     def gen_tour_schedule(tour, gen_schedule)
-      if tour.tour_setting && tour.tour_setting.is_auto_gen == 1 && (!tour.tour_setting.last_schedule_date || Date.parse(tour.tour_setting.last_schedule_date) < @today)
+      if tour.ready_to_gen?
         tour_days = []
         days = tour.tour_setting.days_in_advance.to_i
         days = @default_days if days == 0

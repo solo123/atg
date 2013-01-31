@@ -44,15 +44,5 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :balance_amount, :precision => 8, :scale => 2, :default => 0
       t.timestamps
     end
-    create_table :vouchers do |t|
-      t.decimal :amount, :precision => 8, :scale => 2, :default => 0
-      t.decimal :pay_amount, :precision => 8, :scale => 2, :default => 0
-      t.string :ticket_bar_code
-      t.integer :refund_order_id
-      t.integer :operator_id
-      t.date :expire_date
-      t.integer :status, :default => 0
-      t.timestamps
-    end
   end
 end

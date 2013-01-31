@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
   has_many :payments, :as => :payment_data
   has_many :bus_seats
   has_many :remarks, :as => :note_data, :dependent => :destroy
+  has_many :account_histories, :as => :balance_object
 
   accepts_nested_attributes_for :order_detail, :allow_destroy => true
   accepts_nested_attributes_for :order_price, :allow_destroy => true
@@ -49,5 +50,15 @@ class Order < ActiveRecord::Base
     op.actual_amount = op.total_amount + op.adjustment_amount
     op.balance_amount = op.total_amount + op.adjustment_amount - op.payment_amount
     op.save
+  end
+  def ready_to_payment?
+    order_detail && order_detail.user_info && order_price && (!status || status < 3)
+  end
+  def change_status_after_payment
+    if self.order_price.balance_amount == 0
+      self.status = 3
+    else
+      self.status = 2
+    end
   end
 end

@@ -1,9 +1,11 @@
 <% if flash[:error] %>
-  alert("<%= flash[:error] %>");
+  alert("<%= raw flash[:error] %>");
+  <% flash.discard %>
 <% else %>
   
   $("#list_payments")
     .html("<%= j render(:partial => '/admin/payments/payments', :object => @object.payment.payment_data) %>");
+  to_localtime();
   $('#edit_payment_div').dialog('close');
 
 <% end %>

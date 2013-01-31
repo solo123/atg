@@ -1,34 +1,19 @@
-<%= form_for( [:admin, @object], :remote => true) do |f| %>
-  <div class='container'>
-    <div class='span-8'>
-      <%= f.field_container :owner_id do %>
-        <%= f.label :owner_id %><br />
-        <%= f.select(:owner_id, EmployeeInfo.where(:status => 1).where(:company_id => 1).collect{|e| [e.nickname, e.id]}, {:include_blank => true }, :onchange => 'set_account_name(this);') %>  	
-      <% end %>
-      <%= f.hidden_field 'owner_type', :value => 'EmployeeInfo' %>
-    </div>
+<%= form_for( [:admin, @parent, @object], :remote => true) do |f| %>
   <div class="container">
-  	<div class='span-8'>
-	  <%= f.field_container :account_name do %>
-	  	<%= f.label :account_name %><br />
-	  	<%= f.text_field :account_name %>
-    <% end %>
-	  <%= f.field_container :account_brief do %>
-	  	<%= f.label :account_brief %><br />
-	  	<%= f.text_field :account_brief %>
-    <% end %>
-    <%= render :partial => 'admin/shared/status', :locals => {:f => f} %>
-    <p>
+    <div class='span-8'>
+      <%= f.field_container :account_type do %>
+        <%= f.label :account_type %><br />
+        <%= f.select :account_type, %w{PayCash PayCreditCard PayCheck PayVoucher PayCompany} %>
+      <% end %>
 
-      Owner Type: <%= @object.owner_type %><br />
-      Owner ID:   <%= @object.owner_id %><br />
-      Created at: <%= @object.created_at %><br />
-      Updated at: <%= @object.updated_at %><br />
-    </p>
-	  </div>
-	  <div class='span-8 last'>
+      <%= f.field_container :account_brief do %>
+        <%= f.label :account_brief %><br />
+        <%= f.text_field :account_brief %>
+      <% end %>
+    </div>
+    <div class='span-8 last'>
     </div>   
-	</div>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

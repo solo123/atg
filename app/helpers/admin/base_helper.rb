@@ -185,6 +185,11 @@ var html = $("#{generate_template(form, method, :partial => partial)}".replace(/
       end # case
     end
 
+    def date_tag(date)
+      dt = date.strftime("%Y-%m-%d") 
+      "<time class='local-date' datetime='#{dt}T00:00:00Z'>#{dt}</time>".html_safe
+    end
+
     private
     def attribute_name_for(field_name)
       field_name.gsub(' ', '_').downcase

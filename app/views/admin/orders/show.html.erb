@@ -41,8 +41,8 @@
           <%= @object.schedule.tour.description.title_cn %>
         </p>
         <p>
-          <%= @object.schedule.departure_date.strftime("%Y-%m-%d") %> ~ 
-          <%= @object.schedule.return_date.strftime("%Y-%m-%d") %>
+          <%= date_tag @object.schedule.departure_date %> ~ 
+          <%= date_tag @object.schedule.return_date %>
           &nbsp;|&nbsp;(<%= link_to 'seat table', object_url(@object.schedule) %>)
         </p>
       <% end %>
@@ -91,15 +91,15 @@
       </div>
       <div class='container'>
         <div class='span-3 note-text'>Created at: </div>
-        <div class='span-5 last'><%= time_tag @object.created_at %></div>
+        <div class='span-5 last'><%= time_tag @object.created_at, :class => 'local-datetime' %></div>
       </div>
       <div class='container'>
         <div class='span-3 note-text'>Updated at: </div>
-        <div class='span-5 last'><%= time_tag @object.updated_at if @object.updated_at %></div>
+        <div class='span-5 last'><%= time_tag @object.updated_at, :class => 'local-datetime' if @object.updated_at %></div>
       </div>
       <div class='container'>
         <div class='span-3 note-text'>Completed at: </div>
-        <div class='span-5 last'><%= time_tag @object.completed_at if @object.completed_at %></div>
+        <div class='span-5 last'><%= time_tag @object.completed_at, :class => 'local-datetime' if @object.completed_at %></div>
       </div>
       <div class='container'>
         <div class='span-3 note-text'>Status: </div>

@@ -41,6 +41,10 @@ class Tour < ActiveRecord::Base
     end
   end
 
+  def ready_to_gen?
+    tour_setting && tour_setting.is_auto_gen == 1 && (!tour_setting.last_schedule_date || Date.parse(tour_setting.last_schedule_date) < Date.today) && tour_price && tour_price.price1 && tour_price.price2 && tour_price.price3 && tour_price.price4 && tour_price.price1 > 0 && tour_price.price2 >= tour_price.price1 && tour_price.price3 >= tour_price.price2 && tour_price.price4 >= tour_price.price3
+  end
+
   def gen_schedule(day)
     range = day..day+1
     return nil if !day || self.schedules.exists?(:departure_date => range)

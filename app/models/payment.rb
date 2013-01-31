@@ -4,11 +4,11 @@ class Payment < ActiveRecord::Base
   belongs_to :pay_to, :polymorphic => true
   belongs_to :pay_method, :polymorphic => true
   belongs_to :operator, :class_name => 'EmployeeInfo'
+  belongs_to :received_by, :class_name => 'EmployeeInfo'
   belongs_to :account
+  has_many :account_histories
 
-  validate :check_amount
-
-  def check_amount
-    errors.add(:amount, 'Payment amount cannot be 0.') if amount == 0
+  def balance_data(account_type)
+    account_histories.where(:balance_object_type => account_type).first
   end
 end

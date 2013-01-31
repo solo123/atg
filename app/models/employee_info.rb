@@ -4,7 +4,7 @@ class EmployeeInfo < ActiveRecord::Base
   has_many :emails, :as => :email_data
   has_many :addresses, :as => :address_data
   has_many :telephones, :as => :tel_number
-  has_one :account, :as => :owner
+  has_many :accounts, :as => :owner
   has_many :photos, :as => :photo_data, :dependent => :destroy
   belongs_to :title_photo, :class_name => 'Photo'
 

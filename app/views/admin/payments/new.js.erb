@@ -1,7 +1,7 @@
 var edit_div = "edit_<%= @object.class.name.underscore %>_div";
 if ($('#'+edit_div).length == 0){
   $('#page_main').append("<div id='"+ edit_div +"'></div>");
-  $('#'+edit_div).dialog({ autoOpen:false, width:700, dialogClass:'shadow', modal:true});
+  $('#'+edit_div).dialog({ autoOpen:false, width:750, dialogClass:'shadow', modal:true});
 }
 
 $('#'+edit_div)

@@ -1,0 +1,98 @@
+<% tt = TypeText.instance %>
+<div class='container'>
+  <div class='span-8'>
+    <%= image_tag detail.title_photo.pic.url(:small) if detail.title_photo %>
+  </div>
+  <div class='span-8 last'>
+    <table class='border-table'>
+      <tr>
+        <td>Name</td>
+        <td><%= detail.nickname %></td>
+      </tr>
+      <tr>
+        <td>Company</td>
+        <td>
+          <% if detail.company %>
+            <%= detail.company.company_name %>(<%= detail.company.short_name %>)
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>Roles</td>
+        <td><%= tt.get_texts('roles', detail.roles) %></td>
+      </tr>
+      <tr>
+        <td>Employ date</td>
+        <td><%= time_tag detail.employ_date if detail.employ_date %></td>
+      </tr>
+      <tr>
+        <td>SSN</td>
+        <td><%= detail.ssn %></td>
+      </tr>
+      <tr>
+        <td>PIN</td>
+        <td><%= detail.pin %></td>
+      </tr>
+      <tr>
+        <td>Birthday</td>
+        <td><%= time_tag detail.birthday if detail.birthday %></td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td><%= detail.status %></td>
+      </tr>
+      <tr>
+        <td>Created at</td>
+        <td><%= time_tag detail.created_at %></td>
+      </tr>
+      <tr>
+        <td>Last updated</td>
+        <td><%= time_tag detail.updated_at if detail.updated_at %></td>
+      </tr>
+    </table>
+
+    Contact info:<br />
+    <table class='border-table'>
+      <% detail.telephones.each do |tel| %>
+        <tr>
+          <td>Tel(<%= tel.tel_type %>)</td>
+          <td><%= tel.tel %></td>
+        </tr>
+      <% end %>
+      <% detail.emails.each do |email| %>
+        <tr>
+          <td>Email</td>
+          <td><%= email.email_address %></td>
+        </tr>
+      <% end %>
+      <% detail.addresses.each do |addr| %>
+        <tr>
+          <td>Address</td>
+          <td><%= addr %></td>
+        </tr>
+      <% end %>
+    </table>
+    <table class='border-table'>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>brief</th>
+          <th>Balance</th>
+          <th>Last updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% detail.accounts.each do |account| %>
+          <tr>
+            <td><%= account.account_type %></td>
+            <td><%= account.account_brief %></td>
+            <td><%= account.balance %></td>
+            <td><%= time_tag account.updated_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

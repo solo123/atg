@@ -68,14 +68,19 @@ Omei::Application.routes.draw do
       resources :photos do
         get :cover, :on => :member
       end
+      resources :accounts
     end
     resources :companies do
       get 'add_contact', :on => :collection
       resources :photos do
         get :cover, :on => :member
       end
+      resources :accounts
     end
-    resources :payments, :vouchers, :company_receivables
+    resources :payments do
+      get :refund, :on => :collection
+    end
+    resources :vouchers, :company_receivables
     resources :pay_cashes, :pay_credit_cards, :pay_checks, :pay_companies, :pay_vouchers
     resources :accounts
     resources :telephones, :emails, :addresses
@@ -105,6 +110,7 @@ Omei::Application.routes.draw do
       get :get_detail, :on => :member
       get :search, :on => :collection
     end
+    resources :auths
   end
 
   match '/aeadmin', :to => 'admin/home#index', :as => :aeadmin

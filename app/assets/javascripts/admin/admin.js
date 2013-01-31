@@ -1,4 +1,6 @@
 //= require jquery
+//= require jquery/jquery.localtime-0.5
+//= require jquery/jquery.browser
 //= require jquery/jquery.cookie
 //= require jquery/jquery.timeago
 //= require jquery_ujs

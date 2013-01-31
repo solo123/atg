@@ -53,14 +53,14 @@
                                             tour GET    /tours/:id(.:format)                                                                                      tours#show
                                                  PUT    /tours/:id(.:format)                                                                                      tours#update
                                                  DELETE /tours/:id(.:format)                                                                                      tours#destroy
-                   cover_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id/cover(.:format)                                          admin/destinations/photos#cover
-                        admin_destination_photos GET    /aeadmin/destinations/:destination_id/photos(.:format)                                                    admin/destinations/photos#index
-                                                 POST   /aeadmin/destinations/:destination_id/photos(.:format)                                                    admin/destinations/photos#create
-                     new_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/new(.:format)                                                admin/destinations/photos#new
-                    edit_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id/edit(.:format)                                           admin/destinations/photos#edit
-                         admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/destinations/photos#show
-                                                 PUT    /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/destinations/photos#update
-                                                 DELETE /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/destinations/photos#destroy
+                   cover_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id/cover(.:format)                                          admin/photos#cover
+                        admin_destination_photos GET    /aeadmin/destinations/:destination_id/photos(.:format)                                                    admin/photos#index
+                                                 POST   /aeadmin/destinations/:destination_id/photos(.:format)                                                    admin/photos#create
+                     new_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/new(.:format)                                                admin/photos#new
+                    edit_admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id/edit(.:format)                                           admin/photos#edit
+                         admin_destination_photo GET    /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/photos#show
+                                                 PUT    /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/photos#update
+                                                 DELETE /aeadmin/destinations/:destination_id/photos/:id(.:format)                                                admin/photos#destroy
                               admin_destinations GET    /aeadmin/destinations(.:format)                                                                           admin/destinations#index
                                                  POST   /aeadmin/destinations(.:format)                                                                           admin/destinations#create
                            new_admin_destination GET    /aeadmin/destinations/new(.:format)                                                                       admin/destinations#new
@@ -105,6 +105,7 @@
                                  admin_tour_spot GET    /aeadmin/tours/:tour_id/spots/:id(.:format)                                                               admin/tours/spots#show
                                                  PUT    /aeadmin/tours/:tour_id/spots/:id(.:format)                                                               admin/tours/spots#update
                                                  DELETE /aeadmin/tours/:tour_id/spots/:id(.:format)                                                               admin/tours/spots#destroy
+                              search_admin_tours GET    /aeadmin/tours/search(.:format)                                                                           admin/tours#search
                                      admin_tours GET    /aeadmin/tours(.:format)                                                                                  admin/tours#index
                                                  POST   /aeadmin/tours(.:format)                                                                                  admin/tours#create
                                   new_admin_tour GET    /aeadmin/tours/new(.:format)                                                                              admin/tours#new
@@ -145,6 +146,14 @@ edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:sche
                       add_email_admin_user_infos GET    /aeadmin/user_infos/add_email(.:format)                                                                   admin/user_infos#add_email
                     add_address_admin_user_infos GET    /aeadmin/user_infos/add_address(.:format)                                                                 admin/user_infos#add_address
                           brief_admin_user_infos GET    /aeadmin/user_infos/brief(.:format)                                                                       admin/user_infos#brief
+                     cover_admin_user_info_photo GET    /aeadmin/user_infos/:user_info_id/photos/:id/cover(.:format)                                              admin/photos#cover
+                          admin_user_info_photos GET    /aeadmin/user_infos/:user_info_id/photos(.:format)                                                        admin/photos#index
+                                                 POST   /aeadmin/user_infos/:user_info_id/photos(.:format)                                                        admin/photos#create
+                       new_admin_user_info_photo GET    /aeadmin/user_infos/:user_info_id/photos/new(.:format)                                                    admin/photos#new
+                      edit_admin_user_info_photo GET    /aeadmin/user_infos/:user_info_id/photos/:id/edit(.:format)                                               admin/photos#edit
+                           admin_user_info_photo GET    /aeadmin/user_infos/:user_info_id/photos/:id(.:format)                                                    admin/photos#show
+                                                 PUT    /aeadmin/user_infos/:user_info_id/photos/:id(.:format)                                                    admin/photos#update
+                                                 DELETE /aeadmin/user_infos/:user_info_id/photos/:id(.:format)                                                    admin/photos#destroy
                                 admin_user_infos GET    /aeadmin/user_infos(.:format)                                                                             admin/user_infos#index
                                                  POST   /aeadmin/user_infos(.:format)                                                                             admin/user_infos#create
                              new_admin_user_info GET    /aeadmin/user_infos/new(.:format)                                                                         admin/user_infos#new
@@ -174,6 +183,13 @@ edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:sche
                                                  PUT    /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#update
                                                  DELETE /aeadmin/addresses/:id(.:format)                                                                          admin/addresses#destroy
                            add_room_admin_orders GET    /aeadmin/orders/add_room(.:format)                                                                        admin/orders#add_room
+                             admin_order_remarks GET    /aeadmin/orders/:order_id/remarks(.:format)                                                               admin/remarks#index
+                                                 POST   /aeadmin/orders/:order_id/remarks(.:format)                                                               admin/remarks#create
+                          new_admin_order_remark GET    /aeadmin/orders/:order_id/remarks/new(.:format)                                                           admin/remarks#new
+                         edit_admin_order_remark GET    /aeadmin/orders/:order_id/remarks/:id/edit(.:format)                                                      admin/remarks#edit
+                              admin_order_remark GET    /aeadmin/orders/:order_id/remarks/:id(.:format)                                                           admin/remarks#show
+                                                 PUT    /aeadmin/orders/:order_id/remarks/:id(.:format)                                                           admin/remarks#update
+                                                 DELETE /aeadmin/orders/:order_id/remarks/:id(.:format)                                                           admin/remarks#destroy
                                     admin_orders GET    /aeadmin/orders(.:format)                                                                                 admin/orders#index
                                                  POST   /aeadmin/orders(.:format)                                                                                 admin/orders#create
                                  new_admin_order GET    /aeadmin/orders/new(.:format)                                                                             admin/orders#new
@@ -188,6 +204,21 @@ edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:sche
                                   admin_employee GET    /aeadmin/employees/:id(.:format)                                                                          admin/employees#show
                                                  PUT    /aeadmin/employees/:id(.:format)                                                                          admin/employees#update
                                                  DELETE /aeadmin/employees/:id(.:format)                                                                          admin/employees#destroy
+                 cover_admin_employee_info_photo GET    /aeadmin/employee_infos/:employee_info_id/photos/:id/cover(.:format)                                      admin/photos#cover
+                      admin_employee_info_photos GET    /aeadmin/employee_infos/:employee_info_id/photos(.:format)                                                admin/photos#index
+                                                 POST   /aeadmin/employee_infos/:employee_info_id/photos(.:format)                                                admin/photos#create
+                   new_admin_employee_info_photo GET    /aeadmin/employee_infos/:employee_info_id/photos/new(.:format)                                            admin/photos#new
+                  edit_admin_employee_info_photo GET    /aeadmin/employee_infos/:employee_info_id/photos/:id/edit(.:format)                                       admin/photos#edit
+                       admin_employee_info_photo GET    /aeadmin/employee_infos/:employee_info_id/photos/:id(.:format)                                            admin/photos#show
+                                                 PUT    /aeadmin/employee_infos/:employee_info_id/photos/:id(.:format)                                            admin/photos#update
+                                                 DELETE /aeadmin/employee_infos/:employee_info_id/photos/:id(.:format)                                            admin/photos#destroy
+                    admin_employee_info_accounts GET    /aeadmin/employee_infos/:employee_info_id/accounts(.:format)                                              admin/accounts#index
+                                                 POST   /aeadmin/employee_infos/:employee_info_id/accounts(.:format)                                              admin/accounts#create
+                 new_admin_employee_info_account GET    /aeadmin/employee_infos/:employee_info_id/accounts/new(.:format)                                          admin/accounts#new
+                edit_admin_employee_info_account GET    /aeadmin/employee_infos/:employee_info_id/accounts/:id/edit(.:format)                                     admin/accounts#edit
+                     admin_employee_info_account GET    /aeadmin/employee_infos/:employee_info_id/accounts/:id(.:format)                                          admin/accounts#show
+                                                 PUT    /aeadmin/employee_infos/:employee_info_id/accounts/:id(.:format)                                          admin/accounts#update
+                                                 DELETE /aeadmin/employee_infos/:employee_info_id/accounts/:id(.:format)                                          admin/accounts#destroy
                             admin_employee_infos GET    /aeadmin/employee_infos(.:format)                                                                         admin/employee_infos#index
                                                  POST   /aeadmin/employee_infos(.:format)                                                                         admin/employee_infos#create
                          new_admin_employee_info GET    /aeadmin/employee_infos/new(.:format)                                                                     admin/employee_infos#new
@@ -196,6 +227,21 @@ edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:sche
                                                  PUT    /aeadmin/employee_infos/:id(.:format)                                                                     admin/employee_infos#update
                                                  DELETE /aeadmin/employee_infos/:id(.:format)                                                                     admin/employee_infos#destroy
                      add_contact_admin_companies GET    /aeadmin/companies/add_contact(.:format)                                                                  admin/companies#add_contact
+                       cover_admin_company_photo GET    /aeadmin/companies/:company_id/photos/:id/cover(.:format)                                                 admin/photos#cover
+                            admin_company_photos GET    /aeadmin/companies/:company_id/photos(.:format)                                                           admin/photos#index
+                                                 POST   /aeadmin/companies/:company_id/photos(.:format)                                                           admin/photos#create
+                         new_admin_company_photo GET    /aeadmin/companies/:company_id/photos/new(.:format)                                                       admin/photos#new
+                        edit_admin_company_photo GET    /aeadmin/companies/:company_id/photos/:id/edit(.:format)                                                  admin/photos#edit
+                             admin_company_photo GET    /aeadmin/companies/:company_id/photos/:id(.:format)                                                       admin/photos#show
+                                                 PUT    /aeadmin/companies/:company_id/photos/:id(.:format)                                                       admin/photos#update
+                                                 DELETE /aeadmin/companies/:company_id/photos/:id(.:format)                                                       admin/photos#destroy
+                          admin_company_accounts GET    /aeadmin/companies/:company_id/accounts(.:format)                                                         admin/accounts#index
+                                                 POST   /aeadmin/companies/:company_id/accounts(.:format)                                                         admin/accounts#create
+                       new_admin_company_account GET    /aeadmin/companies/:company_id/accounts/new(.:format)                                                     admin/accounts#new
+                      edit_admin_company_account GET    /aeadmin/companies/:company_id/accounts/:id/edit(.:format)                                                admin/accounts#edit
+                           admin_company_account GET    /aeadmin/companies/:company_id/accounts/:id(.:format)                                                     admin/accounts#show
+                                                 PUT    /aeadmin/companies/:company_id/accounts/:id(.:format)                                                     admin/accounts#update
+                                                 DELETE /aeadmin/companies/:company_id/accounts/:id(.:format)                                                     admin/accounts#destroy
                                  admin_companies GET    /aeadmin/companies(.:format)                                                                              admin/companies#index
                                                  POST   /aeadmin/companies(.:format)                                                                              admin/companies#create
                                new_admin_company GET    /aeadmin/companies/new(.:format)                                                                          admin/companies#new
@@ -203,6 +249,7 @@ edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:sche
                                    admin_company GET    /aeadmin/companies/:id(.:format)                                                                          admin/companies#show
                                                  PUT    /aeadmin/companies/:id(.:format)                                                                          admin/companies#update
                                                  DELETE /aeadmin/companies/:id(.:format)                                                                          admin/companies#destroy
+                            refund_admin_payment GET    /aeadmin/payments/:id/refund(.:format)                                                                    admin/payments#refund
                                   admin_payments GET    /aeadmin/payments(.:format)                                                                               admin/payments#index
                                                  POST   /aeadmin/payments(.:format)                                                                               admin/payments#create
                                new_admin_payment GET    /aeadmin/payments/new(.:format)                                                                           admin/payments#new
@@ -369,6 +416,23 @@ edit_admin_schedule_schedule_assignment_bus_seat GET    /aeadmin/schedules/:sche
                                     admin_remark GET    /aeadmin/remarks/:id(.:format)                                                                            admin/remarks#show
                                                  PUT    /aeadmin/remarks/:id(.:format)                                                                            admin/remarks#update
                                                  DELETE /aeadmin/remarks/:id(.:format)                                                                            admin/remarks#destroy
+                               select_admin_city GET    /aeadmin/cities/:id/select(.:format)                                                                      admin/cities#select
+                           get_detail_admin_city GET    /aeadmin/cities/:id/get_detail(.:format)                                                                  admin/cities#get_detail
+                             search_admin_cities GET    /aeadmin/cities/search(.:format)                                                                          admin/cities#search
+                                    admin_cities GET    /aeadmin/cities(.:format)                                                                                 admin/cities#index
+                                                 POST   /aeadmin/cities(.:format)                                                                                 admin/cities#create
+                                  new_admin_city GET    /aeadmin/cities/new(.:format)                                                                             admin/cities#new
+                                 edit_admin_city GET    /aeadmin/cities/:id/edit(.:format)                                                                        admin/cities#edit
+                                      admin_city GET    /aeadmin/cities/:id(.:format)                                                                             admin/cities#show
+                                                 PUT    /aeadmin/cities/:id(.:format)                                                                             admin/cities#update
+                                                 DELETE /aeadmin/cities/:id(.:format)                                                                             admin/cities#destroy
+                                     admin_auths GET    /aeadmin/auths(.:format)                                                                                  admin/auths#index
+                                                 POST   /aeadmin/auths(.:format)                                                                                  admin/auths#create
+                                  new_admin_auth GET    /aeadmin/auths/new(.:format)                                                                              admin/auths#new
+                                 edit_admin_auth GET    /aeadmin/auths/:id/edit(.:format)                                                                         admin/auths#edit
+                                      admin_auth GET    /aeadmin/auths/:id(.:format)                                                                              admin/auths#show
+                                                 PUT    /aeadmin/auths/:id(.:format)                                                                              admin/auths#update
+                                                 DELETE /aeadmin/auths/:id(.:format)                                                                              admin/auths#destroy
                                          aeadmin        /aeadmin(.:format)                                                                                        admin/home#index
                                                         /barcode/:str(.:format)                                                                                   barcode#gen
                                                         /:controller/:id/:action(.:format)                                                                        (?-mix:admin\/[^\/]+)#:action

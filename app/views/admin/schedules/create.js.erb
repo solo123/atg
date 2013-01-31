@@ -1,5 +1,6 @@
 <% if flash[:error] %>
   alert("<%= flash[:error] %>");
+  <% flash.discard %>
 <% else %>
   $('#edit_schedule_div').dialog('close');
   $("#list_schedules")

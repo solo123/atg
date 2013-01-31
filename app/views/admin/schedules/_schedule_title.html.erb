@@ -4,8 +4,8 @@
       <%= s.id %><br />
     </div>
     <div class="s-date">
-      出發: <b><%= s.departure_date.strftime("%Y-%m-%d") %></b><br />
-      返回: <b><%= s.return_date.strftime("%Y-%m-%d") %></b>
+      出發: <b><%= date_tag s.departure_date %></b><br />
+      返回: <b><%= date_tag s.return_date %></b>
     </div>
 
     <div class="s-title">
