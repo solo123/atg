@@ -9,23 +9,13 @@ module Biz
 
       payment = set_payment_data(order, a_pay, operator)
       ActiveRecord::Base.transaction do
-        set_order_and_history(order, payment, a_pay)
-        set_receive_account(payment)
-        unless payment.save
-          errors << payment.errors.full_messages.to_sentence
-          break
-        end
-        unless order.save
-          errors << order.errors.full_messages.to_sentence
-          break
-        end
-        unless payment.account.save
-          errors << payment.account.errors.full_messages.to_sentence
-          break
-        end
+        set_receive_account(payment)      
+        payment.save!
+        payment.account.save!
+        order.pay(payment)
         if a_pay.is_a? PayVoucher
           a_pay.voucher.status = 0
-          a_pay.voucher.save
+          a_pay.voucher.save!
         end
       end
     end
@@ -74,13 +64,6 @@ module Biz
       a_pay.status = 1
       p
     end
-    def set_order_and_history(order, payment, a_pay)
-      order_hist = order.account_histories.build
-      order_hist.sub_balance(order.order_price.balance_amount, payment.amount)
-      order.order_price.balance_amount = order_hist.balance_after
-      order_hist.payment = payment
-      order.change_status_after_payment
-    end
     def set_receive_account(payment)
       account = payment.account
       acc_hist = account.account_histories.build
@@ -95,20 +78,10 @@ module Biz
 
       payment = set_payment_data(order, refund, operator)
       ActiveRecord::Base.transaction do
-        set_order_and_history(order, payment, refund)
         set_receive_account(payment)
-        unless payment.save
-          errors << payment.errors.full_messages.to_sentence
-          break
-        end
-        unless order.save
-          errors << order.errors.full_messages.to_sentence
-          break
-        end
-        unless payment.account.save
-          errors << payment.account.errors.full_messages.to_sentence
-          break
-        end
+        payment.save!
+        payment.account.save!
+        order.pay(refund)
       end
     end
 
@@ -250,10 +223,7 @@ module Biz
           @errors << p.account.errors.full_messages.to_sentence
           break
         end
-        unless order.save
-          @errors << order.errors.full_messages.to_sentence
-          break
-        end
+        order.pay(p)
         if a_pay.is_a? PayVoucher
           a_pay.voucher.status = 1
           a_pay.voucher.save

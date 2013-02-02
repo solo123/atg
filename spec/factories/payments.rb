@@ -11,6 +11,8 @@ FactoryGirl.define do
   end
   factory :voucher do
   end
+  factory :normal_payment, class: Payment do
+  end
 
   factory :account do
   end

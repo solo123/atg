@@ -61,4 +61,12 @@ class Order < ActiveRecord::Base
       self.status = 2
     end
   end
+  def pay(payment)
+    hist = self.account_histories.build
+    hist.sub_balance(self.order_price.balance_amount, payment.amount)
+    self.order_price.balance_amount = hist.balance_after
+    hist.payment = payment
+    change_status_after_payment
+    self.save
+  end
 end

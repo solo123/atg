@@ -1,0 +1,15 @@
+Model: City
+id | city     | state     | country
+1  | Shenzhen | Guangdong | CN
+2  | Guangzhou| Guangdong | CN
+
+Model: Description
+id  | desc_data_type | desc_data_id | title   | title_cn | en           | cn 
+1   | Destination    | 1            | dest 01 | 目的地01 | visit dest01 |参观dest01
+2   | Destination    | 2            | dest 02 |||
+
+Model: Destination
+id | city_id | status 
+1  | 1       | 1
+2  | 2       | 1 
+

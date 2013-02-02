@@ -1,5 +1,5 @@
   <div class='a-note'><div class='content'>
-    <p class='note-text small-font'><%= row.employee_info.nickname %>
+    <p class='note-text small-font'><%= row.employee_info.nickname if row.employee_info %>
       <%= time_tag row.created_at %>
   </p>
   <p><%= row.note_text %></p>

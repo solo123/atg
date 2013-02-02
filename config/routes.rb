@@ -113,6 +113,7 @@ Omei::Application.routes.draw do
     resources :auths
   end
 
+  get 'employee' => 'admin/home#index'
   match '/aeadmin', :to => 'admin/home#index', :as => :aeadmin
   match 'barcode/:str' => 'barcode#gen'
   match ':controller/:id/:action', :controller => /admin\/[^\/]+/ 

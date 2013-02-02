@@ -11,7 +11,8 @@ module Admin
     def load_collection
       params[:search] ||= {}
       @search = Destination.metasearch(params[:search])
-      @collection = @search.page(params[:page]).includes([:city]).per_page(cfg.get_config(:admin_list_per_page))
+      pages = cfg.get_config(:admin_list_per_page) || "20"
+      @collection = @search.paginate(:page => params[:page], :per_page => pages).includes([:city])
     end
 
     def add_description
