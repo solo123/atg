@@ -20,7 +20,7 @@ File.open(File.dirname(__FILE__) + '/seeds.txt') do |file|
         model = eval(model_new_string)
         datas = line.split('|').map{|txt| txt.strip }
         datas.each_with_index do |d, col|
-          model[headers[col]] = d.empty? ? nil : d
+          model.send(headers[col] + '=', d.empty? ? nil : d)
         end
         model.save!
       end

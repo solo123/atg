@@ -44,7 +44,6 @@ module Admin
           tour_days.each do |d|
             range = d..d+1
             if !Schedule.exists?(:tour_id => tour.id, :departure_date => range)            
-              Schedule.gen(tour,d) if gen_schedule
               ds << d
             end
           end

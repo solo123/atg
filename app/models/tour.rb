@@ -46,8 +46,7 @@ class Tour < ActiveRecord::Base
   end
 
   def gen_schedule(day)
-    range = day..day+1
-    return nil if !day || self.schedules.exists?(:departure_date => range)
+    return nil if !day || self.schedules.exists?(:departure_date => day)
     
     s = self.schedules.build
     s.departure_date = day
@@ -63,6 +62,8 @@ class Tour < ActiveRecord::Base
       p.price3 = tp.price3
       p.price4 = tp.price4
     end
+    ass = s.assignments.build
+    ass.save
     s.save    
     s
   end

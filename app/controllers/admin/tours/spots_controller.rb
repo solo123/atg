@@ -18,6 +18,10 @@ module Admin
       @object.tour.title_photo = @object.destination.title_photo
       @object.tour.save
     end
+    def destroy
+      @object = Spot.find(params[:id])
+      @object.destroy
+    end
 
     def add_tour_id
       @object.tour_id = params[:tour_id].to_i

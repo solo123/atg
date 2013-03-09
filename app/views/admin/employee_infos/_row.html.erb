@@ -4,7 +4,7 @@
       <td><%= row.company_id %></td>
       <td><%= row.nickname %></td>
       <td><%= tt.get_texts('roles', row.roles) %></td>
-      <td><%= time_tag row.employ_date %></td>
+      <td><%= time_tag row.employ_date if row.employ_date %></td>
       <td><%= row.ssn %></td>
       <td><%= row.birthday %></td>
       <td><%= row.status %></td>

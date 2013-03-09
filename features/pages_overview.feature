@@ -3,14 +3,10 @@ Feature: Visit common pages and sucess
     Given Signin as admin
 
   Scenario: visit destinations pages
-    Given browse the destinations page
+    Given browse resource page destinations
+    Then table list_destinations have 3 rows
+    Then check destination's operations
 
-  Scenario: visit orders pages
-    Given browse the orders page
-    Then I should have the selector "list_orders"
-
-  Scenario: visit order detail
-    Given goto order page
 
 
 

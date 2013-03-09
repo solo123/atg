@@ -633,13 +633,14 @@ ActiveRecord::Schema.define(:version => 20130127061057) do
   create_table "vouchers", :force => true do |t|
     t.integer  "payment_id"
     t.integer  "order_id"
-    t.decimal  "order_amount", :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "refund_fee",   :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "amount",       :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "order_amount",     :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "refund_fee",       :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "amount",           :precision => 8, :scale => 2, :default => 0.0
     t.date     "expire_date"
-    t.integer  "status",                                     :default => 0
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.integer  "employee_info_id"
+    t.integer  "status",                                         :default => 0
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
 end
