@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127061057) do
+ActiveRecord::Schema.define(:version => 20130301093401) do
 
   create_table "account_histories", :force => true do |t|
     t.integer  "balance_object_type"
@@ -72,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20130127061057) do
     t.integer  "parent_id",  :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "bills", :force => true do |t|
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "bookmarks", :force => true do |t|
@@ -370,6 +376,7 @@ ActiveRecord::Schema.define(:version => 20130127061057) do
     t.integer  "company_id"
     t.integer  "account_id"
     t.string   "company_order_number"
+    t.integer  "bill_id"
     t.integer  "invoice_id"
     t.decimal  "amount",               :precision => 8, :scale => 2, :default => 0.0
     t.decimal  "company_discount",     :precision => 8, :scale => 2, :default => 0.0

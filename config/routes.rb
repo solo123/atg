@@ -15,7 +15,7 @@ Omei::Application.routes.draw do
     match 'prices' => 'orders#prices'
   end
 
-  namespace :admin, :path => 'aeadmin' do
+  namespace :admin, :path => 'ewtt' do
     resources :destinations do
       resources :photos do
         member do
@@ -75,14 +75,19 @@ Omei::Application.routes.draw do
       resources :photos do
         get :cover, :on => :member
       end
-      resources :accounts
+      resources :accounts 
+      get :new_invoice, :on => :member 
     end
     resources :payments do
       get :refund, :on => :collection
     end
     resources :vouchers, :company_receivables
     resources :pay_cashes, :pay_credit_cards, :pay_checks, :pay_companies, :pay_vouchers
-    resources :accounts
+    resources :accounts do
+      get :company, :on => :collection
+      get :pay, :on => :member
+    end
+    resources :bills, :invoices
     resources :telephones, :emails, :addresses
     resources :input_types, :tour_types, :positions
     resources :schedule_assignment_costs, :schedule_assignment_balances
@@ -114,7 +119,7 @@ Omei::Application.routes.draw do
   end
 
   get 'employee' => 'admin/home#index'
-  match '/aeadmin', :to => 'admin/home#index', :as => :aeadmin
+  match '/ewtt', :to => 'admin/home#index', :as => :aeadmin
   match 'barcode/:str' => 'barcode#gen'
   match ':controller/:id/:action', :controller => /admin\/[^\/]+/ 
 

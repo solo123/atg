@@ -21,6 +21,12 @@ module Admin
                   Company.find(params[:company_id])
                 end
     end
+    def company
+       load_collection 
+    end
+    def pay
+      load_object
+    end
 	end
 end
 

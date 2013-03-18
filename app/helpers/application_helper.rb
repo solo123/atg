@@ -8,4 +8,7 @@ module ApplicationHelper
 	    end
 	  end.join("\n").html_safe
   end
+  def cfg
+    AppConfig.instance
+  end
 end
