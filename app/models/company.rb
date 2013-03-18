@@ -6,6 +6,7 @@ class Company < ActiveRecord::Base
   has_many :photos, :as => :photo_data, :dependent => :destroy
   belongs_to :title_photo, :class_name => 'Photo'
   has_many :bills, :dependent => :destroy
+  has_one :company_account
 
 	accepts_nested_attributes_for :contacts,
   	:reject_if => proc { |attributes| attributes['full_name'].blank? }
