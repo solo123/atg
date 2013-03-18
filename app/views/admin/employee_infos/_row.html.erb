@@ -4,9 +4,8 @@
       <td><%= row.company_id %></td>
       <td><%= row.nickname %></td>
       <td><%= tt.get_texts('roles', row.roles) %></td>
-      <td><%= time_tag row.employ_date if row.employ_date %></td>
-      <td><%= row.ssn %></td>
-      <td><%= row.birthday %></td>
+      <td><%= row.default_telephone %></td>
+      <td><%= row.default_email %></td>
       <td><%= row.status %></td>
     <td class="actions">
       <%= link_to_edit row %> |

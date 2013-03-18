@@ -11,28 +11,6 @@
 	  	<%= f.label :nickname %><br />
 	  	<%= f.text_field :nickname %>
 	  <% end %>
-	  <%= f.field_container :employ_date do %>
-	  	<%= f.label :employ_date %><br />
-      <%= f.text_field :employ_date, :class => 'date-picker' %>
-	  <% end %>
-	  <%= f.field_container :ssn do %>
-	  	<%= f.label :ssn %><br />
-	  	<%= f.text_field :ssn %>
-	  <% end %>
-	  <%= f.field_container :birthday do %>
-	  	<%= f.label :birthday %><br />
-      <%= f.text_field :birthday, :class => 'date-picker' %>
-	  <% end %>
-    <%= f.field_container :roles do %>
-      <%= f.label :roles %><br />
-      <%= f.hidden_field :roles %>
-      <% InputType.get_list('roles').each do |role| %>
-        <%= check_box_tag "role[#{role.type_text}]", role.type_value, @object.roles && @object.roles.include?(role.type_value), {:id => dom_id(role), :onchange => 'roles_changed();'} %>
-        <%= label_tag dom_id(role), role.type_text %>
-      <% end %>
-    <% end %>
-    </div>
-    <div class='span-8 last'>
 	  	Telephones:
       <%= add_object_js_link 'Add', f, :telephones, '/admin/user_infos/form_tel', '#tels'  %>
       <br /> 
@@ -50,6 +28,8 @@
         <% end %>
       </div>
       <hr />
+    </div>
+    <div class='span-8 last'>
 	  	
 	  	Addresses:
       <%= add_object_js_link 'Add', f, :addresses, '/admin/user_infos/form_address', '#addresses'  %>

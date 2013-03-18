@@ -1,5 +1,9 @@
 Omei::Application.routes.draw do
-  devise_for :employees
+  devise_for :employees, :skip => [:registrations]
+    as :employee do
+      get '/employees/edit' => 'devise/registrations#edit', :as => 'edit_employee_registration'
+      put 'employees' => 'devise/registrations#update', :as => 'employee_registration'
+    end
   devise_for :users
   root :to => 'home#index'
   match 'home(/:action)' => 'home'
@@ -63,7 +67,6 @@ Omei::Application.routes.draw do
       get :add_room, :on => :collection
       resources :remarks
     end
-    resources :employees
     resources :employee_infos do
       resources :photos do
         get :cover, :on => :member
@@ -115,10 +118,9 @@ Omei::Application.routes.draw do
       get :get_detail, :on => :member
       get :search, :on => :collection
     end
-    resources :auths
+    resources :auths, :employees;
   end
 
-  get 'employee' => 'admin/home#index'
   match '/ewtt', :to => 'admin/home#index', :as => :aeadmin
   match 'barcode/:str' => 'barcode#gen'
   match ':controller/:id/:action', :controller => /admin\/[^\/]+/ 

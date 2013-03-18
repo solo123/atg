@@ -28,7 +28,7 @@
 
       <div id='login'>
         <% if current_employee %>
-        Welcome <%= current_employee.employee_info.nickname %> |
+        Welcome <%= link_to current_employee.employee_info.nickname, admin_employees_path %> |
         <%= link_to 'Logout', destroy_employee_session_path, :method => :delete %>
         <% end %>
       </div>
