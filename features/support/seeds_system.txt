@@ -1,0 +1,46 @@
+Model: InputType
+type_name | type_text | type_value | status
+tour      | Bus Tour  | 1          | 1
+tour      | Package   | 2          | 1
+tour      | Cruise    | 3          | 1
+bus       | Bus       | BUS        | 1
+bus       | Mini Bus  | MBUS       | 1
+bus       | Van       | Van        | 1
+roles     | Sales     | 1          | 1
+roles     | Driver    | 2          | 1
+roles     | Tour Guide| 3          | 1
+roles     | Manager   | 4          | 1
+roles     | Account   | 5          | 1
+roles     | Admin     | X          | 1
+company   | AE Travel | 1          | 1
+company   | Agent     | 2          | 1
+company   | Tour Company | 3       | 1
+company   | Hotel     | 4          | 1
+tel       | Home      | home       | 1
+tel       | Mobile    | mobile     | 1
+tel       | Walky     | walky      | 1
+tel       | Tel       | tel        | 1
+tel       | Fax       | fax        | 1
+order.status | New    | 0          | 1
+order.status | Order  | 1          | 1
+order.status | Paid   | 2          | 1
+order.status | Full Paid | 3       | 1
+order.status | Cancled   | 7       | 1
+order.status | Finished  | 8       | 1
+todo.level   | Normal    | 1       | 1
+todo.level   | Important | 2       | 1
+todo.level   | Urgent    | 3       | 1
+todo.level   | Error     | 4       | 1
+todo.status  | New       | 0       | 1
+todo.status  | Doing     | 1       | 1
+todo.status  | Done      | 2       | 1
+todo.status  | Cancled   | 7       | 1
+todo.status  | Finished  | 8       | 1
+
+Model: AppConfiguration
+id | key   | title   | val   | parent_id
+1  | site_name | Website Title | AETravel | |
+2  | admin_list_per_page  | List lines per page in admin | 20 ||
+3  | admin_path           | The admin path               | /aeadmin ||
+4  | max_reservation_days | The max days auto-create schedules on the auto-get tours | 90 ||
+

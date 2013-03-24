@@ -11,6 +11,9 @@
 	  	<%= f.label :nickname %><br />
 	  	<%= f.text_field :nickname %>
 	  <% end %>
+    </div>
+    <div class='span-8 last'>
+	  	
 	  	Telephones:
       <%= add_object_js_link 'Add', f, :telephones, '/admin/user_infos/form_tel', '#tels'  %>
       <br /> 
@@ -28,9 +31,6 @@
         <% end %>
       </div>
       <hr />
-    </div>
-    <div class='span-8 last'>
-	  	
 	  	Addresses:
       <%= add_object_js_link 'Add', f, :addresses, '/admin/user_infos/form_address', '#addresses'  %>
       <br /> 
@@ -43,7 +43,6 @@
     </div>
 	</div>
 
-  <%= render :partial => 'admin/shared/status', :locals => {:f => f} %> 
   <div class="actions">
     <%= f.submit %>
   </div>

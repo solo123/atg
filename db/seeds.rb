@@ -8,7 +8,7 @@
 puts "Loading seeds ..."
 model_new_string = nil
 headers = nil
-File.open("#{Rails.root}/features/support/seeds.txt") do |file|
+File.open("#{Rails.root}/features/support/seeds_system.txt") do |file|
   while line = file.gets
     line.strip!
     if line.empty?

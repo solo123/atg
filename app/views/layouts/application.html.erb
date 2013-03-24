@@ -5,6 +5,7 @@
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  	
 	<%= stylesheet_link_tag    "store/all", :media => "all" %>
 	<%= javascript_include_tag "store/all" %>
+  <link rel="stylesheet" href="/css/jqueryui/ui.css" type="text/css" media="screen, projection">
 	<%= csrf_meta_tags %>
 	<%= yield :head %>
   </head>
@@ -17,7 +18,7 @@
         </div>
         <div class='aetravel-logo'>
           <a href="/">
-            <%= image_tag '/pics/logo.png', :height => '46', :alt => ''  %>
+            <%= image_tag '/pics/logo_w.png', :height => '46', :alt => ''  %>
           </a>
         </div>
         <div class='login-status'>

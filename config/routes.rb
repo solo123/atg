@@ -19,7 +19,7 @@ Omei::Application.routes.draw do
     match 'prices' => 'orders#prices'
   end
 
-  namespace :admin, :path => 'ewtt' do
+  namespace :admin, :path => 'omeiadmin' do
     resources :destinations do
       resources :photos do
         member do
@@ -121,7 +121,7 @@ Omei::Application.routes.draw do
     resources :auths, :employees;
   end
 
-  match '/ewtt', :to => 'admin/home#index', :as => :aeadmin
+  match '/omeiadmin', :to => 'admin/home#index', :as => :omeiadmin
   match 'barcode/:str' => 'barcode#gen'
   match ':controller/:id/:action', :controller => /admin\/[^\/]+/ 
 
