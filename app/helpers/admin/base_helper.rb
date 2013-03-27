@@ -190,6 +190,18 @@ var html = $("#{generate_template(form, method, :partial => partial)}".replace(/
       "<time class='local-date' datetime='#{dt}T00:00:00Z'>#{dt}</time>".html_safe
     end
 
+    def has_auth(action_name)
+      roles = current_employee.employee_info.roles
+      auth = Auth.find_by_action(action_name)
+      if auth.nil? 
+        auth = Auth.new(:role => '', :action => action_name)
+        auth.save
+      end
+      return true if /X/.match(roles)
+      return false if auth.role.empty?
+      auth.role.match(Regexp.new("[#{roles}]"))
+    end
+
     private
     def attribute_name_for(field_name)
       field_name.gsub(' ', '_').downcase

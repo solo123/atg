@@ -33,9 +33,10 @@
   </ul>
   </li>
   <li><a href='#'>Reports</a></li>
+  <% if has_auth('show_manage_menu') %>
   <li><a href='#'>Manage</a>
   <ul>
-    <li><%= link_to t(:employees), admin_employee_infos_path %></li>
+    <li><%= link_to t(:employees), docs_admin_employee_infos_path %></li>
     <li><a href='#'>Data Types</a>
     <ul>
       <li><%= link_to t(:input_types), admin_input_types_path %></li>
@@ -44,4 +45,5 @@
     </li>
   </ul>
   </li>
+  <% end %>
 </ul>

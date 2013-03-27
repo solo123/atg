@@ -14,6 +14,17 @@ module Admin
   def cfg
     AppConfig.instance
   end
+    def has_auth(action_name)
+      roles = current_employee.employee_info.roles
+      auth = Auth.find_by_action(action_name)
+      if auth.nil? 
+        auth = Auth.new(:role => '', :action => action_name)
+        auth.save
+      end
+      return true if /X/.match(roles)
+      return false if auth.role.empty?
+      auth.role.match(Regexp.new("[#{roles}]"))
+    end
 
     def log_operation
       return if defined? @no_log

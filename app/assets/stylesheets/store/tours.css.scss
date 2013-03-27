@@ -8,11 +8,11 @@
 #tour_dests {
 	clear:both; margin-top:10px;
 	.pic {
-		width: 150px; height:100px; float:left;
+		width: 150px; height:100px; float:left; overflow: hidden;
 		padding:2px;
 		border:solid 1px $color_border;
 		img {
-			width:148px;height:98px;
+			width:148px;
 		}
 	}
 	.day {

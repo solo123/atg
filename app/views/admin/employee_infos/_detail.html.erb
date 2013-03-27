@@ -1,62 +1,42 @@
 <% tt = TypeText.instance %>
 <div class='container'>
-  <div class='span-8'>
-    <%= image_tag detail.title_photo.pic.url(:small) if detail.title_photo %>
-  </div>
-  <div class='span-8 last'>
-    <table class='border-table'>
-      <tr>
-        <td>Name</td>
-        <td><%= detail.nickname %></td>
-      </tr>
-      <tr>
-        <td>Company</td>
-        <td>
-          <% if detail.company %>
-            <%= detail.company.company_name %>(<%= detail.company.short_name %>)
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>Roles</td>
-        <td><%= tt.get_texts('roles', detail.roles) %></td>
-      </tr>
-      <tr>
-        <td>Employ date</td>
-        <td><%= time_tag detail.employ_date if detail.employ_date %></td>
-      </tr>
-      <tr>
-        <td>SSN</td>
-        <td><%= detail.ssn %></td>
-      </tr>
-      <tr>
-        <td>PIN</td>
-        <td><%= detail.pin %></td>
-      </tr>
-      <tr>
-        <td>Birthday</td>
-        <td><%= time_tag detail.birthday if detail.birthday %></td>
-      </tr>
-      <tr>
-        <td>Status</td>
-        <td><%= detail.status %></td>
-      </tr>
-      <tr>
-        <td>Created at</td>
-        <td><%= time_tag detail.created_at %></td>
-      </tr>
-      <tr>
-        <td>Last updated</td>
-        <td><%= time_tag detail.updated_at if detail.updated_at %></td>
-      </tr>
-    </table>
+<table class='border-table'>
+  <tr>
+    <td width='200'>
+      <%= image_tag detail.title_photo.pic.url(:small) if detail.title_photo %>
+    </td>
+    <td style='padding:6px;' class='border-table'>
+      <table padding='4'>
+        <tr>
+          <td width='100'>Company:</td>
+          <td width='300'><%= detail.company.company_name if detail.company %></td>
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td><%= detail.nickname %></td>
+        </tr>
+        <tr>
+          <td>Employ from:</td>
+          <td><%= detail.employ_date %></td>
+        </tr>
+        <tr>
+          <td>Age:</td>
+          <td><%= Time.now.year - detail.birthday.year if detail.birthday %> (<%= detail.birthday %>)</td>
+        </tr>
+      </table>
+        Created at:<%= time_tag detail.created_at %>
+        Last updated: <%= time_tag detail.updated_at if detail.updated_at %>
+    </td>
+  </tr>
+</table>
+<br />
 
     Contact info:<br />
     <table class='border-table'>
       <% detail.telephones.each do |tel| %>
         <tr>
-          <td>Tel(<%= tel.tel_type %>)</td>
-          <td><%= tel.tel %></td>
+          <td width='200'>Tel(<%= tel.tel_type %>)</td>
+          <td width='430'><%= tel.tel %></td>
         </tr>
       <% end %>
       <% detail.emails.each do |email| %>
@@ -72,6 +52,7 @@
         </tr>
       <% end %>
     </table>
+    <br />
     <table class='border-table'>
       <thead>
         <tr>
@@ -92,7 +73,6 @@
         <% end %>
       </tbody>
     </table>
-  </div>
 </div>
 
 

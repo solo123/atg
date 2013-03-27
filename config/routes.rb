@@ -72,6 +72,8 @@ Omei::Application.routes.draw do
         get :cover, :on => :member
       end
       resources :accounts
+      get :docs, :on => :collection
+      get :test_email, :on => :member
     end
     resources :companies do
       get 'add_contact', :on => :collection
