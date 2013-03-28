@@ -1,7 +1,8 @@
-<h1>Employee</h1>
-
-<div>
-  <%= link_to "Change your password", edit_employee_registration_path %>
-  <%= link_to "Send me test email", test_email_admin_employee_info_path(current_employee) %>
-</div>
+<h2>My Account</h2>
+<%= render :partial => '/admin/employee_infos/detail_info', :object => current_employee.employee_info %>
+<hr />
+<ul>
+  <li><%= link_to "Change my password", edit_employee_registration_path %></li>
+  <li><%= link_to "Send me Welcome email", test_email_admin_employee_info_path(current_employee) %></li>
+</ul>
 
